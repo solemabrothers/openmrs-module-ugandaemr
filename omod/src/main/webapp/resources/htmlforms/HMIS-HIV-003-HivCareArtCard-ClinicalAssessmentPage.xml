@@ -59,6 +59,57 @@
             var latestTransferInEncounter = getLatestEncounterFromEncounterList(transferInEncounters);
             var latestTransferOutEncounter = getLatestEncounterFromEncounterList(transferOutEncounters);
 
+            jq(document).ready(function () {
+
+
+                var enableCDDPCategorization = <lookup expression="fn.globalProperty('ugandaemr.enableCDDPCategorization')"/>;
+                fieldHelper.makeReadonly(getField('refill_point_id.value'));
+                if(enableCDDPCategorization===true){
+                    showContainer("#cddp_categorization");
+                }else {
+                    hideContainer("#cddp_categorization");
+                }
+
+                jq("#refill_point_select_id").attr("disabled", true);
+                disable_fields("cddp_category");
+
+
+                jq("#refill_point_select_id").change(function () {
+                    jq("#refill_point_id input").val(this.value);
+                });
+
+                jq("#cddp_category").change(function () {
+                    var cddpCategory= jq("#cddp_category").find("select").find(":selected").val();
+                    setValue('refill_point_id.value','');
+                    if (cddpCategory === "a6a0ab45-b7dc-43b2-b28c-45a91f968ebf") {
+<!--                            CRPDDP categories fetching-->
+                        jq('#refill_point_select_id').parent('div').parent('div').find('label').html('Pharmacy');
+                        jq("#refill_point_select_id").attr("disabled", false);
+                        getCohortCategorizations("e50fa0af-df36-4a26-853f-feb05244e5ca");
+                    } else if (cddpCategory === "d77cc565-5e53-4633-8fc7-956cfc1831d9") {
+<!--                            CLDDP categories fetching -->
+                        jq('#refill_point_select_id').parent('div').parent('div').find('label').html('CLDDP Group');
+                        jq("#refill_point_select_id").attr("disabled", false);
+                        getCohortCategorizations("aa536e57-a3c3-453c-9413-cf70b5d2ad5d");
+                    }else {
+                        jq('#refill_point_select_id').parent('div').parent('div').find('label').html('DSD Refill Group');
+                        jq("#refill_point_select_id").attr("disabled", true);
+                    }
+                });
+
+                jq("#165143 select").change(function () {
+                    if (jq("#165143").find("select").find(":selected").val() === "165142") {
+                        enable_fields("cddp_category");
+                    }else {
+                        setValue('refill_point_id.value','');
+                        jq("#refill_point_select_id  option").prop("selected", false);
+                        jq("#cddp_category  option").prop("selected", false);
+                        disable_fields("cddp_category");
+                    }
+                });
+            });
+
+
             function getEncountersByEncounterTypeUUID(patientUUID,encounterTypeUUID){
                 var serverResponse =[];
                 jq.ajax({
@@ -84,6 +135,27 @@
                 }else {
                     return false;
                 }
+            }
+
+            function getCohortCategorizations(uuid){
+                jq('#refill_point_select_id').empty();
+                jq.ajax({
+                    type: "GET",
+                    url: '/' + OPENMRS_CONTEXT_PATH + "/ws/rest/v1/cohortm/cohort?v=custom:(name,uuid,description,voided)&amp;cohortType=" + uuid,
+                    dataType: "json",
+                    contentType: "application/json",
+                    async: false,
+                    success: function (data) {
+                    var cohorts = data.results;
+                    jq('#refill_point_select_id').append($("<option ></option>").attr("value",''));
+                        for (var i = 0; i &lt; cohorts.length; i++) {
+                            if(cohorts[i].voided===false){
+                                jq('#refill_point_select_id').append($("<option></option>").attr("value", cohorts[i].uuid).text(cohorts[i].name));
+                            }
+                        }
+
+                    }
+                });
             }
 
            jq(document).ready(function () {
@@ -412,12 +484,10 @@
                     DSDMStabilityCheck();
                 });
 
-
-                jq("#reason-for-next-appointment").change(function () {
-                    if (jq(this).find("select").find(":selected").val() == "90002") {
+                jq(".reason-for-next-appointment").change(function () {
+                    if (jq(this).find('#check-other-reason-for-next-appointment').find(':checkbox').prop('checked')) {
                         enable_fields("other-reason-for-next-appointment");
                     } else {
-                        jq("#other-reason-for-next-appointment").find("input[type=hidden]").val() == " ";
                         disable_fields("other-reason-for-next-appointment");
                     }
                 });
@@ -1305,6 +1375,30 @@
 
             </restrictByRole>
 
+            var cohort = getValue('refill_point_id.value');
+            var date = encounterDate.getFullYear()+'-'+(encounterDate.getMonth()+1)+'-'+encounterDate.getDate();
+            var DSDCategory = getValue('cddp_category.value');
+            var dataToPost = "{\"patient\": \"" +  patientUUID + "\", \"cohort\": \"" + cohort + "\",\"startDate\": \"" + date+ "\"}";
+            if (cohort == "" &amp;&amp; (DSDCategory==="a6a0ab45-b7dc-43b2-b28c-45a91f968ebf" || DSDCategory==="d77cc565-5e53-4633-8fc7-956cfc1831d9")){
+                jq().toastmessage('showErrorToast', "Select at least a DSD Refill for this client");
+                return false;
+            }else{
+                jq.ajax({
+                type: "POST",
+                url: '/' + OPENMRS_CONTEXT_PATH + "/ws/rest/v1/cohortm/cohortmember/",
+                dataType: "json",
+                contentType: "application/json",
+                accept: "application/json",
+                data: dataToPost,
+                success: function (data) {
+                    jq().toastmessage('showSuccessToast', "Client Added to a Refill Group Successfully");
+                },
+                error: function (response) {
+                    jq().toastmessage('showErrorToast', "Error while Added Client to Refill Group");
+                }
+                });
+            }
+
                 return true;
             });
 
@@ -1598,31 +1692,52 @@
                                                         </excludeIf>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <span class="">
-                                                            <label>Reasons for next appointment</label>
-                                                            <obs id="reason-for-next-appointment" conceptId="160288"
-                                                                 answerConceptIds="164968,164972,164970,856,5497,163153,164971,164973,99324,164974,90012,903,5484,90002"
-                                                                 answerLabels="1. ART Initiation, 2. ART Refill, 3. ART Regimen Switch/ Substitution, 4. Viral Load, 5. CD4, 6. IAC, 7. T.B Drug Refill,8. T.B Follow up,
-                                                             9. ANC,10. EID,11. PMTCT, 12. Hypertension/ Diabetes, 13. Nutrition,14. Other Specify"/>
-                                                        </span>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label>Other Reason for next appointment</label>
-                                                        <obs id="other-reason-for-next-appointment" conceptId="164975"/>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-3">
                                                         <obs conceptId="90069" labelText="Visit on Schedule"
                                                              style="checkbox"/>
                                                     </div>
                                                     <div class="col-md-3">
-                                                    <label><span class="required">*</span>Attending Clinician</label>
+                                                        <label><span class="required">*</span>Attending Clinician</label>
                                                         <encounterProviderAndRole role="Provider" encounterRole="240b26f9-dd88-4172-823d-4a8bfeb7841f" required="required"/>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Reasons for next appointment
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row reason-for-next-appointment" >
+                                                    <obs conceptId="160288" answerConceptId="164968"   answerLabel="ART Initiation" class="col-md-3"/>
+                                                    <obs conceptId="160288" answerConceptId="164972"   answerLabel="ART Refill" class="col-md-3" />
+                                                    <obs conceptId="160288" answerConceptId="164970"   answerLabel="ART Regimen Switch/ Substitution" class="col-md-3" />
+                                                    <obs conceptId="160288" answerConceptId="856"   answerLabel="Viral Load" class="col-md-3"/>
+                                                    <obs conceptId="160288" answerConceptId="5497"   answerLabel="CD4" class="col-md-3"/>
+                                                    <obs conceptId="160288" answerConceptId="163153"  answerLabel="IAC" class="col-md-3"/>
+                                                    <obs conceptId="160288" answerConceptId="164971"     answerLabel="T.B Drug Refill" class="col-md-3"/>
+                                                    <obs conceptId="160288" answerConceptId="164973"  answerLabel="T.B Follow up" class="col-md-3"/>
+                                                    <obs conceptId="160288" answerConceptId="99324"  answerLabel="ANC" class="col-md-3"/>
+                                                    <obs conceptId="160288" answerConceptId="164974"  answerLabel="EID" class="col-md-3"/>
+                                                    <obs conceptId="160288" answerConceptId="90012"     answerLabel="PMTCT" class="col-md-3"/>
+                                                    <obs conceptId="160288" answerConceptId="903"  answerLabel="Hypertension/ Diabetes" class="col-md-3"/>
+                                                    <obs conceptId="160288" answerConceptId="5484"  answerLabel="Nutrition" class="col-md-3"/>
+                                                    <obs id="check-other-reason-for-next-appointment" conceptId="160288" answerConceptId="90002"  answerLabel="Other Specify" class="col-md-3"/>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <obs id="other-reason-for-next-appointment" conceptId="164975"
+                                                             labelText="Other Reason for next appointment"/>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+
                                         <div class="card">
                                             <div class="card-header">Vital Signs</div>
                                             <div class="card-body">
@@ -2640,6 +2755,30 @@
                                                         <obs conceptId="160288" answerConceptIds="164969,165284"
                                                              answerLabels="R - Drug Refill ONLY, C - Clinical Assessment/Drug refill and/or Tests/Investigations"
                                                              style="radio" class="horizontal"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="cddp_categorization" class="card">
+                                            <div class="card-header">Drug Pick Up Model</div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-3" id="cddp_category">
+                                                        <label>CDDP Category</label>
+                                                        <workflowState  workflowId="4" stateIds="16,14,15" stateLabels="General CDDP, CLDDP,CRPDDP"/>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                       <label>DSD Group Refill Point</label>
+                                                        <div class="form-group">
+                                                            <select class="form-control" id="refill_point_select_id" name="refill_point_select_id">
+                                                                <option value="">Select Refill Point</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <obs id="refill_point_id" conceptId="166500"
+                                                             labelText="DSD Group Code"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3721,13 +3860,67 @@
                         </div>
                     </div>
 
-                    <div class="card" id="next-course-of-action">
+                    <div id="cddp_categorization" class="card">
+                        <div class="card-header">Drug Pick Up Model</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3" id="cddp_category">
+                                    <label>CDDP Category</label>
+                                    <workflowState  workflowId="4" stateIds="16,14,15" stateLabels="General CDDP, CLDDP,CRPDDP"/>
+                                </div>
+                                <div class="col-md-3">
+                                   <label>DSD Group Refill Point</label>
+                                    <div class="form-group">
+                                        <select class="form-control" id="refill_point_select_id" name="refill_point_select_id">
+                                            <option value="">Select Refill Point</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <obs id="refill_point_id" conceptId="166500"
+                                         labelText="DSD Group Code"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="card" id="next-course-of-action">
                         <div class="card-header">
                             <label>Next Course of Action</label>
                         </div>
                         <div class="card-body">
                             <div class="final-out-come">
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Reasons for next appointment
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row reason-for-next-appointment" >
+                                                <obs conceptId="160288" answerConceptId="164968"   answerLabel="ART Initiation" class="col-md-3"/>
+                                                <obs conceptId="160288" answerConceptId="164972"   answerLabel="ART Refill" class="col-md-3" />
+                                                <obs conceptId="160288" answerConceptId="164970"   answerLabel="ART Regimen Switch/ Substitution" class="col-md-3" />
+                                                <obs conceptId="160288" answerConceptId="856"   answerLabel="Viral Load" class="col-md-3"/>
+                                                <obs conceptId="160288" answerConceptId="5497"   answerLabel="CD4" class="col-md-3"/>
+                                                <obs conceptId="160288" answerConceptId="163153"  answerLabel="IAC" class="col-md-3"/>
+                                                <obs conceptId="160288" answerConceptId="164971"     answerLabel="T.B Drug Refill" class="col-md-3"/>
+                                                <obs conceptId="160288" answerConceptId="164973"  answerLabel="T.B Follow up" class="col-md-3"/>
+                                                <obs conceptId="160288" answerConceptId="99324"  answerLabel="ANC" class="col-md-3"/>
+                                                <obs conceptId="160288" answerConceptId="164974"  answerLabel="EID" class="col-md-3"/>
+                                                <obs conceptId="160288" answerConceptId="90012"     answerLabel="PMTCT" class="col-md-3"/>
+                                                <obs conceptId="160288" answerConceptId="903"  answerLabel="Hypertension/ Diabetes" class="col-md-3"/>
+                                                <obs conceptId="160288" answerConceptId="5484"  answerLabel="Nutrition" class="col-md-3"/>
+                                                <obs id="check-other-reason-for-next-appointment" conceptId="160288" answerConceptId="90002"  answerLabel="Other Specify" class="col-md-3"/>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <obs id="other-reason-for-next-appointment" conceptId="164975"
+                                                         labelText="Other Reason for next appointment"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <excludeIf velocityTest="$patient.person.dead ==true">
@@ -3748,16 +3941,6 @@
                                             </includeIf>
                                         </excludeIf>
                                     </div>
-                                    <div class="col-md-4">
-                                        <obs id="reason-for-next-appointment" conceptId="160288"
-                                             labelText="Reasons for next appointment"
-                                             answerConceptIds="164968,164972,164970,856,5497,163153,164971,164973,99324,164974,90012,903,5484,90002"
-                                             answerLabels="1. ART Initiation, 2. ART Refill, 3. ART Regimen Switch/ Substitution, 4. Viral Load, 5. CD4, 6. IAC, 7. T.B Drug Refill,8. T.B Follow up, 9. ANC,10. EID,11. PMTCT, 12. Hypertension/ Diabetes, 13. Nutrition,14. Other Specify"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <obs id="other-reason-for-next-appointment" conceptId="164975"
-                                             labelText="Other Reason for next appointment"/>
-                                    </div>
                                 </div>
                                 <obsgroup groupingConceptId="99166">
                                     <div class="row">
@@ -3775,6 +3958,7 @@
                                 </obsgroup>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

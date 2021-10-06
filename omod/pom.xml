@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.openmrs.module</groupId>
 		<artifactId>ugandaemr</artifactId>
-		<version>3.2.0-SNAPSHOT</version>
+		<version>3.2.4-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>ugandaemr-omod</artifactId>
@@ -118,21 +118,6 @@
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>htmlformentry-api</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.openmrs.module</groupId>
-			<artifactId>htmlformentry-api-1.10</artifactId>
-		</dependency>
-
-        <dependency>
-            <groupId>org.openmrs.module</groupId>
-            <artifactId>htmlformentry-api-2.0</artifactId>
-        </dependency>
-		
-		<dependency>
-			<groupId>org.openmrs.module</groupId>
-			<artifactId>htmlformentry-api-2.3</artifactId>
 		</dependency>
 
 		<dependency>
@@ -395,7 +380,7 @@
 			<plugin>
 				<groupId>org.openmrs.maven.plugins</groupId>
 				<artifactId>openmrs-sdk-maven-plugin</artifactId>
-				<version>3.13.1</version>
+				<version>4.0.1</version>
 				<executions>
 					<execution>
 						<id>build-distro</id>

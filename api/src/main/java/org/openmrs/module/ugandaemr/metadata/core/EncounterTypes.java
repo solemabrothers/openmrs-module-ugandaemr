@@ -232,15 +232,31 @@ public class EncounterTypes {
         }
     };
 
-    public static EncounterTypeDescriptor COVID19_ENROLLMENT = new EncounterTypeDescriptor() {
+    public static EncounterTypeDescriptor ART_REGIMEN_CHANGE = new EncounterTypeDescriptor() {
         @Override
         public String name() {
-            return "Covid19 Case Initiation";
+            return "ART Regimen Change";
         }
 
         @Override
         public String description() {
-            return "Covid19 Case Enrollment Encounter";
+            return "ART Regimen Switch or Change Encounter";
+        }
+
+        public String uuid() {
+            return "c11774c1-3b4a-4bdb-a847-6060895e006d";
+        }
+    };
+
+    public static EncounterTypeDescriptor COVID19_ENROLLMENT = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Covid19 Case Investigation";
+        }
+
+        @Override
+        public String description() {
+            return "Covid19 Case Investigation Encounter";
         }
 
         public String uuid() {
@@ -251,16 +267,76 @@ public class EncounterTypes {
     public static EncounterTypeDescriptor COVID19_FOLLOWUP = new EncounterTypeDescriptor() {
         @Override
         public String name() {
-            return "Covid19 Case Followup";
+            return "Covid19 Clinical Management";
         }
 
         @Override
         public String description() {
-            return "Covid19 Case Followup Encounter";
+            return "Covid19 Clinical Management Encounter";
         }
 
         public String uuid() {
-            return "95d334b0-c322-46ee-856a-4f503c8979ee";
+            return "cd9a2698-206f-44f3-a888-f824544413b4";
+        }
+    };
+    public static EncounterTypeDescriptor COVID19_DISCHARGE = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Covid19 Discharge";
+        }
+
+        @Override
+        public String description() {
+            return "Covid19 Discharge Encounter";
+        }
+
+        public String uuid() {
+            return "482e4b17-fb9c-4937-a1cf-9052d3e3be68";
+        }
+    };
+    public static EncounterTypeDescriptor COVID19_POSTMORTEM = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Covid19 Postmortem";            
+        }
+
+        @Override
+        public String description() {
+            return "Covid19 Postmortem Encounter";
+        }
+
+        public String uuid() {
+            return "7f7f59dc-defe-11eb-ba80-0242ac130004";
+        }
+    };
+    public static EncounterTypeDescriptor COVID19_REFERRAL = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Covid19 Referral";
+        }
+
+        @Override
+        public String description() {
+            return "Covid19 Referral Encounter";
+        }
+
+        public String uuid() {
+            return "afcdfcd8-defe-11eb-ba80-0242ac130004";
+        }
+    };
+    public static EncounterTypeDescriptor EMERGENCY_ART_SERVICE = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Emergency ART Service Encounter";
+        }
+
+        @Override
+        public String description() {
+            return "Emergency ART Service Encounter";
+        }
+
+        public String uuid() {
+            return "d18bd8f2-dfcd-11eb-ba80-0242ac130004";
         }
     };
 }
