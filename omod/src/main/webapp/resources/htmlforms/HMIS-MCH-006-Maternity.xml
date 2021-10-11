@@ -309,7 +309,7 @@
 										<div class="row">
 											<div class="col-md-3">
 												<label>Woman eMTCT</label>
-												<obs id="emtct-code-woman" conceptId="99317" answerConceptIds="99313, 99734, 99314, 99315, 99735, 99736, 99739, 99741"
+												<obs id="emtct-code-woman" conceptId="99317" answerConceptIds="99313, 99734, 99314, 99315, 99739, 99736, 99739, 99741"
                                                  	 answerLabels="C - Counseled but declined HIV testing,
 	                                                               T - Counseled and tested but didn't receive results,
 	                                                               TR - Counseled tested and results given - Client tested HIV Negative in Maternity,
