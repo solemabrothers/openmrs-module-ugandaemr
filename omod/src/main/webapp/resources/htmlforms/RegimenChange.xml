@@ -13,10 +13,10 @@
 
 
     <ifMode mode="ENTER,EDIT" include="false">
-        <includeIf velocityTest="$fn.allEncounters('8d5b27bc-c2cc-11de-8d13-0010c6dffd0f').size() == 0 or $fn.allEncounters('8d5b2be0-c2cc-11de-8d13-0010c6dffd0f').size() == 0">
+        <includeIf velocityTest="$fn.allEncounters('8d5b27bc-c2cc-11de-8d13-0010c6dffd0f').size() == 0">
             <script>
                 jq(function () {
-                    jq().toastmessage('showErrorToast', "This patient is missing an ART Summary page and a Clinical Assessment page");
+                    jq().toastmessage('showErrorToast', "This patient is missing an ART Summary page");
                     alert('This patient has no Summary page, you will now be forwarded to the patient dashboard');
 
                     /*
@@ -47,14 +47,20 @@
     </ifMode>
 
         <lookup complexExpression="#if ($encounter) #set ($encounterDate = $encounter.encounterDatetime) #else #set ($encounterDate = $visit.startDatetime) #end"/>
+    <!-- Use the date a day before the encounter date as there will be an overlap if the actual encounter date is used -->
+    <lookup complexExpression="#set ($previousRegimenDate = $fn.yesterday($encounterDate))"/>
     <lookup complexExpression="#set ($regimenLineId = $fn.currentProgramWorkflowStatus(3,$encounterDate).state.concept.Id)" />
     <lookup complexExpression="#set ($regimenLineName = $fn.currentProgramWorkflowStatus(3,$encounterDate).state.concept.name)" />
     <script type="text/javascript">
+        jq(document).ready(function () {
+            // set the value of the prior regimen
+            setValue('prior-regimen.value', jq("#current-regimen-id").html());
+        });
         beforeSubmit.push(function () {
             // ensure that the current regimen is not the same as the switch or substituted regimen
             var current_regimen_id = jq("#current-regimen-id").html();
 
-            if (current_regimen_id == getValue('new-regimen.value')) {
+            if (current_regimen_id === getValue('new-regimen.value')) {
                 getField('new-regimen.error').html('The new regimen ' + jq("#current-regimen-name").html() + ' cannot be the same as the current regimen ').show();
                 jq().toastmessage('showErrorToast', "The new regimen " + jq("#current-regimen-name").html() + " cannot be the same as the current regimen");
                 return false;
@@ -95,9 +101,14 @@
                             <label><b>Current Regimen</b></label>
                         </td>
                         <td>
-                            <lookup complexExpression="$fn.latestObs(90315,$encounterDate).valueCoded.name"/>
-                            <span class="hidden" id="current-regimen-id"><lookup complexExpression="$fn.latestObs(90315,$encounterDate).valueCoded.Id"/></span>
-                            <span class="hidden" id="current-regimen-name"><lookup complexExpression="$fn.latestObs(90315,$encounterDate).valueCoded.name"/></span>
+                            <lookup complexExpression="#if ($fn.latestObs(90315,$previousRegimenDate)) #set ($currentRegimen=$fn.latestObs(90315,$previousRegimenDate)) #else #set ($currentRegimen=$fn.latestObs(99064,$encounterDate)) #end"/>
+                            <lookup complexExpression="#if (!$currentRegimen) #set ($currentRegimenName='No Current or Transfer-in Regimen') #else #set ($currentRegimenName=$currentRegimen.valueCoded.name) #end"/>
+                            <lookup complexExpression="$currentRegimenName" />
+                            <span class="hidden" id="current-regimen-id"><lookup complexExpression="$currentRegimen.valueCoded.Id"/></span>
+                            <span class="hidden" id="current-regimen-name"><lookup complexExpression="$currentRegimen.valueCoded.name"/></span>
+                            <span class="hidden">
+                                <obs id="prior-regimen" conceptId="166039" />
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -119,7 +130,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td nowrap="">
+                        <td>
                             <label><b>Regimen Change Type</b></label>
                         </td>
                         <td>
@@ -137,6 +148,7 @@
 
                         </td>
                     </tr>
+                    <excludeIf velocityTest="$fn.latestObs(166339,$encounterDate).valueCoded.Id == 1371">
                     <tr>
                         <td>
                             <label><b>New Regimen</b></label>
@@ -152,6 +164,16 @@
                             </span>
                         </td>
                     </tr>
+                    <tr id="regimen-substitution-reason">
+                        <td>
+                            <label><b>Reason for regimen substitution</b></label>
+                        </td>
+                        <td>
+                            <obs conceptId="90246" rows="5"/>
+                        </td>
+                    </tr>
+                    </excludeIf>
+                    <excludeIf velocityTest="$fn.latestObs(166339,$encounterDate).valueCoded.Id == 1372">
                     <tr id="regimen-switch-line">
                         <td>
                             <label><b>New Regimen Line for Switch</b></label>
@@ -166,9 +188,9 @@
                                 <includeIf velocityTest="$regimenLineId == 90305">
                                     <workflowState workflowId="3" stateId="13" stateLabel="Third Line" />
                                 </includeIf>
-                                <!-- Current Regimen is First Line so shows Second and Third Line -->
+                                <!-- Current Regimen is First Line so only shows Second Line -->
                                 <includeIf velocityTest="$regimenLineId == 90271">
-                                    <workflowState type="radio" workflowId="3" stateIds="12,13" stateLabels="Second Line,Third Line" />
+                                    <workflowState workflowId="3" stateId="12" stateLabel="Second Line" />
                                 </includeIf>
                             </ifMode>
                         </td>
@@ -181,14 +203,8 @@
                             <obs conceptId="90247" rows="5"/>
                         </td>
                     </tr>
-                    <tr id="regimen-substitution-reason">
-                        <td>
-                            <label><b>Reason for regimen substitution</b></label>
-                        </td>
-                        <td>
-                            <obs conceptId="90246" rows="5"/>
-                        </td>
-                    </tr>
+                    </excludeIf>
+
                     <tr>
                         <td>
                             <label><b>Clinician Notes</b></label>
