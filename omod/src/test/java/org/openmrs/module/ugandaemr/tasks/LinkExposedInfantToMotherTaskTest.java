@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.openmrs.Person;
 import org.openmrs.Relationship;
 import org.openmrs.api.context.Context;
-import org.openmrs.web.test.BaseModuleWebContextSensitiveTest;
+import org.openmrs.web.test.jupiter.BaseModuleWebContextSensitiveTest;;
 
 /**
  * Tests the task to link infants to mothers, builds on @link MotherToBabyPairLinkingPostSubmissionActionTest

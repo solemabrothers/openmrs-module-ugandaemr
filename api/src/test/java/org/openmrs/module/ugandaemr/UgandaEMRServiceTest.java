@@ -8,24 +8,28 @@ import org.junit.Test;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.openmrs.*;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.VisitService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.ugandaemr.api.UgandaEMRService;
-import org.openmrs.test.BaseModuleContextSensitiveTest;
+import org.openmrs.test.jupiter.BaseModuleContextSensitiveTest;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 
 public class UgandaEMRServiceTest extends BaseModuleContextSensitiveTest {
 
     protected static final String UGANDAEMR_STANDARD_DATASET_XML = "org/openmrs/module/ugandaemr/include/standardTestDataset.xml";
 
 
-    @Before
+    @BeforeEach
     public void setup() throws Exception {
         executeDataSet(UGANDAEMR_STANDARD_DATASET_XML);
     }
@@ -36,13 +40,13 @@ public class UgandaEMRServiceTest extends BaseModuleContextSensitiveTest {
 
         List listBeforeGeneration = Context.getAdministrationService().executeSQL("select * from patient inner join patient_identifier pi on (patient.patient_id = pi.patient_id)  inner join patient_identifier_type pit on (pi.identifier_type = pit.patient_identifier_type_id) where pit.uuid='877169c4-92c6-4cc9-bf45-1ab95faea242'", true);
 
-        Assert.assertEquals(0, listBeforeGeneration.size());
+        assertEquals(0, listBeforeGeneration.size());
 
         ugandaemrService.generateAndSaveUICForPatientsWithOut();
 
         List listAfterGeneration = Context.getAdministrationService().executeSQL("select * from patient inner join patient_identifier pi on (patient.patient_id = pi.patient_id)  inner join patient_identifier_type pit on (pi.identifier_type = pit.patient_identifier_type_id) where pit.uuid='877169c4-92c6-4cc9-bf45-1ab95faea242'", true);
 
-        Assert.assertNotEquals(0,listAfterGeneration.size());
+        assertNotEquals(0,listAfterGeneration.size());
     }
 
     @Test
@@ -65,11 +69,11 @@ public class UgandaEMRServiceTest extends BaseModuleContextSensitiveTest {
         VisitService visitService=Context.getVisitService();
         UgandaEMRService ugandaemrService=Context.getService(UgandaEMRService.class);
 
-        Assert.assertTrue(visitService.getActiveVisitsByPatient(Context.getPatientService().getPatient(10110)).size()>0);
+        assertTrue(visitService.getActiveVisitsByPatient(Context.getPatientService().getPatient(10110)).size()>0);
 
         ugandaemrService.stopActiveOutPatientVisits();
 
-        Assert.assertTrue(visitService.getActiveVisitsByPatient(Context.getPatientService().getPatient(10110)).size()==0);
+        assertTrue(visitService.getActiveVisitsByPatient(Context.getPatientService().getPatient(10110)).size()==0);
 
 
 
@@ -79,7 +83,7 @@ public class UgandaEMRServiceTest extends BaseModuleContextSensitiveTest {
     public void isTransferredIn_ShouldReturnFalseWhenPatientIsNotTransferIn() {
         UgandaEMRService ugandaemrService=Context.getService(UgandaEMRService.class);
         Patient patient=Context.getPatientService().getPatient(10008);
-        Assert.assertFalse(ugandaemrService.isTransferredIn(patient,new Date()));
+        assertFalse(ugandaemrService.isTransferredIn(patient,new Date()));
 
     }
 
@@ -87,7 +91,7 @@ public class UgandaEMRServiceTest extends BaseModuleContextSensitiveTest {
     public void isTransferredOut_ShouldReturnFalseWhenPatientIsNotTransferredOut() {
         UgandaEMRService ugandaemrService=Context.getService(UgandaEMRService.class);
         Patient patient=Context.getPatientService().getPatient(10008);
-        Assert.assertFalse(ugandaemrService.isTransferredIn(patient,new Date()));
+        assertFalse(ugandaemrService.isTransferredIn(patient,new Date()));
     }
 
 

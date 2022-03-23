@@ -1,19 +1,19 @@
 package org.openmrs.module.ugandaemr;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openmrs.GlobalProperty;
 import org.openmrs.api.AdministrationService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.ugandaemr.api.UgandaEMRService;
-import org.openmrs.test.BaseModuleContextSensitiveTest;
+import org.openmrs.test.jupiter.BaseContextSensitiveTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.openmrs.module.ugandaemr.UgandaEMRConstants.*;
 
-public class SettingsNotificationTest extends BaseModuleContextSensitiveTest {
+public class SettingsNotificationTest extends BaseContextSensitiveTest {
 
-    @Before
+    @BeforeEach
     public void setGlobalProperty() {
         GlobalProperty globalProperty = new GlobalProperty();
         GlobalProperty globalProperty1 = new GlobalProperty();
@@ -30,7 +30,7 @@ public class SettingsNotificationTest extends BaseModuleContextSensitiveTest {
     @Test
     public void shouldReturnSetGlobalProperty() {
         AdministrationService administrationService = Context.getAdministrationService();
-        Assert.assertEquals(administrationService.getGlobalProperty(GP_NHPI), GP_NHPI_VALUE);
+       assertEquals(administrationService.getGlobalProperty(GP_NHPI), GP_NHPI_VALUE);
     }
 
     @Test

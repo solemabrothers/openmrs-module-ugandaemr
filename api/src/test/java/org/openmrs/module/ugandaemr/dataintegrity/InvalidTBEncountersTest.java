@@ -1,26 +1,29 @@
 package org.openmrs.module.ugandaemr.dataintegrity;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+
 
 import java.util.List;
 
 import org.joda.time.DateTime;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openmrs.Patient;
 import org.openmrs.module.ugandaemr.UgandaEMRConstants;
 import org.openmrs.module.dataintegrity.rule.RuleResult;
-import org.openmrs.test.BaseModuleContextSensitiveTest;
+import org.openmrs.test.jupiter.BaseContextSensitiveTest;
 
-public class InvalidTBEncountersTest extends BaseModuleContextSensitiveTest{
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+public class InvalidTBEncountersTest extends BaseContextSensitiveTest{
 	
 	protected static final String UGANDAEMR_STANDARD_DATASET_XML = "org/openmrs/module/ugandaemr/include/standardTestDataset.xml";
 	protected static final String UGANDAEMR_DATA_VIOLATIONS_XML = "org/openmrs/module/ugandaemr/include/tbEncountersData.xml";
 
 	InvalidTBEncounters invalidTBEncounters;
 
-	@Before
+	@BeforeEach
 	public void initialize() throws Exception {
 		executeDataSet(UGANDAEMR_STANDARD_DATASET_XML);
 		executeDataSet(UGANDAEMR_DATA_VIOLATIONS_XML);

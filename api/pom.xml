@@ -194,7 +194,7 @@
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 		</dependency>
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<resources>

@@ -6,7 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openmrs.Patient;
 import org.openmrs.module.ugandaemr.fragment.controller.PatientStabilityFragmentController;
-import org.openmrs.web.test.BaseModuleWebContextSensitiveTest;
+import org.openmrs.web.test.jupiter.BaseModuleWebContextSensitiveTest;
+
 
 import java.util.Date;
 

@@ -15,7 +15,7 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.ugandaemr.metadata.core.Programs;
 import org.openmrs.module.ugandaemr.tasks.ExitTBProgramASLostToFollowUpTask;
 import org.openmrs.util.LocaleUtility;
-import org.openmrs.web.test.BaseModuleWebContextSensitiveTest;
+import org.openmrs.web.test.jupiter.BaseModuleWebContextSensitiveTest;;
 
 public class ExitTBProgramASLostToFollowUpTaskTest extends BaseModuleWebContextSensitiveTest {
 	
