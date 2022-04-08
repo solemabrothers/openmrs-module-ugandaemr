@@ -105,9 +105,9 @@ public class PublicHolidayControllerTest extends MainResourceControllerTest {
         SimpleObject result = deserialize(handle(req));
         List<Object> hits = (List<Object>) result.get("results");
 
-        Assert.assertEquals(1, hits.size()); 
+        Assert.assertEquals(1, hits.size());
         Assert.assertEquals("New Years Day", PropertyUtils.getProperty(hits.get(0), "name"));
-        
+
     }
 
     @Override
@@ -157,4 +157,5 @@ public class PublicHolidayControllerTest extends MainResourceControllerTest {
         Assert.assertNotNull(PropertyUtils.getProperty(result, "date"));
         Assert.assertNotNull(PropertyUtils.getProperty(result, "isPublicHoliday"));
     }
-}*/
+}
+*/

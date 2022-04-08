@@ -11,12 +11,12 @@ import org.junit.jupiter.api.Test;
 import org.openmrs.Patient;
 import org.openmrs.module.ugandaemr.UgandaEMRConstants;
 import org.openmrs.module.dataintegrity.rule.RuleResult;
-import org.openmrs.test.jupiter.BaseContextSensitiveTest;
+import org.openmrs.test.jupiter.BaseModuleContextSensitiveTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class InvalidTBEncountersTest extends BaseContextSensitiveTest{
+public class InvalidTBEncountersTest extends BaseModuleContextSensitiveTest{
 	
 	protected static final String UGANDAEMR_STANDARD_DATASET_XML = "org/openmrs/module/ugandaemr/include/standardTestDataset.xml";
 	protected static final String UGANDAEMR_DATA_VIOLATIONS_XML = "org/openmrs/module/ugandaemr/include/tbEncountersData.xml";

@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.openmrs.api.UserService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.dataexchange.DataImporter;
-import org.openmrs.test.jupiter.BaseContextSensitiveTest;
+import org.openmrs.test.jupiter.BaseModuleContextSensitiveTest;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RolePrivilegeImportTest extends BaseContextSensitiveTest {
+public class RolePrivilegeImportTest extends BaseModuleContextSensitiveTest {
 
 
     protected static final String ROLE_PRIVILLEGE_DATASET_XML = "metadata/Role_Privilege.xml";

@@ -6,12 +6,12 @@ import org.openmrs.GlobalProperty;
 import org.openmrs.api.AdministrationService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.ugandaemr.api.UgandaEMRService;
-import org.openmrs.test.jupiter.BaseContextSensitiveTest;
+import org.openmrs.test.jupiter.BaseModuleContextSensitiveTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.openmrs.module.ugandaemr.UgandaEMRConstants.*;
 
-public class SettingsNotificationTest extends BaseContextSensitiveTest {
+public class SettingsNotificationTest extends BaseModuleContextSensitiveTest {
 
     @BeforeEach
     public void setGlobalProperty() {
