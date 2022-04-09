@@ -13,6 +13,9 @@ import static org.openmrs.module.ugandaemr.UgandaEMRConstants.*;
 
 public class SettingsNotificationTest extends BaseModuleContextSensitiveTest {
 
+    AdministrationService administrationService=null;
+    UgandaEMRService ugandaemrService=null;
+
     @BeforeEach
     public void setGlobalProperty() {
         GlobalProperty globalProperty = new GlobalProperty();
@@ -22,21 +25,20 @@ public class SettingsNotificationTest extends BaseModuleContextSensitiveTest {
         globalProperty.setPropertyValue(GP_NHPI_VALUE);
         globalProperty.setDescription(GP_NHPI_DESCRIPTION);
 
-        AdministrationService administrationService = Context.getAdministrationService();
+        administrationService = Context.getAdministrationService();
+        ugandaemrService = Context.getService(UgandaEMRService.class);
         administrationService.saveGlobalProperty(globalProperty);
 
     }
 
     @Test
     public void shouldReturnSetGlobalProperty() {
-        AdministrationService administrationService = Context.getAdministrationService();
-       assertEquals(administrationService.getGlobalProperty(GP_NHPI), GP_NHPI_VALUE);
+
+        assertEquals(administrationService.getGlobalProperty(GP_NHPI), GP_NHPI_VALUE);
     }
 
     @Test
     public void shouldSaveAlert() {
-        AdministrationService administrationService = Context.getAdministrationService();
-        UgandaEMRService ugandaemrService = Context.getService(UgandaEMRService.class);
         if (administrationService.getGlobalProperty(GP_NHPI) == GP_NHPI_VALUE) {
             ugandaemrService.setAlertForAllUsers("This is a message");
         }
