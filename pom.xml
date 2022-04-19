@@ -59,7 +59,7 @@
 	</modules>
 
 	<properties>
-		<openMRSVersion>2.5.3</openMRSVersion>
+		<openMRSVersion>2.5.4-SNAPSHOT</openMRSVersion>
 		<openmrsTestutilsVersion>1.3</openmrsTestutilsVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<webservices.restModuleVersion>2.36.0</webservices.restModuleVersion>
@@ -79,7 +79,7 @@
 		<databaseBackupVersion>1.3.0</databaseBackupVersion>
 		<dataEntryStatisticsVersion>1.7.0</dataEntryStatisticsVersion>
 		<dataexchangeVersion>1.3.7</dataexchangeVersion>
-		<dataintegrityVersion>4.4.3</dataintegrityVersion>
+		<dataintegrityVersion>4.4.4-SNAPSHOT</dataintegrityVersion>
 		<emrapiVersion>1.32.0</emrapiVersion>
 		<eventVersion>2.10.0</eventVersion>
 		<fhir2Version>1.3.0</fhir2Version>
@@ -97,7 +97,7 @@
 		<metadatasharingVersion>1.8.0</metadatasharingVersion>
 		<openconceptlabVersion>1.2.9</openconceptlabVersion>
 		<openwebappsVersion>1.13.0</openwebappsVersion>
-		<patientFlagsVersion>3.0.2</patientFlagsVersion>
+		<patientFlagsVersion>3.0.3-SNAPSHOT</patientFlagsVersion>
 		<providermanagementVersion>2.13.0</providermanagementVersion>
 		<referenceapplicationVersion>2.12.2</referenceapplicationVersion>
 		<referencemetadataVersion>2.12.0</referencemetadataVersion>

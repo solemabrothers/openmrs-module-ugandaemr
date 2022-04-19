@@ -9,14 +9,14 @@ import java.util.Date;
 import java.util.List;
 
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Before;
 import org.openmrs.*;
 import org.openmrs.api.AdministrationService;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.VisitService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.ugandaemr.api.UgandaEMRService;
-import org.openmrs.test.jupiter.BaseModuleContextSensitiveTest;
+import org.openmrs.test.BaseModuleContextSensitiveTest;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +35,7 @@ public class UgandaEMRServiceTest extends BaseModuleContextSensitiveTest {
     protected VisitService visitService = null;
     protected AdministrationService administrationService=null;
 
-    @BeforeEach
+    @Before
     public void setup() throws Exception {
         executeDataSet(UGANDAEMR_STANDARD_DATASET_XML);
         ugandaemrService = Context.getService(UgandaEMRService.class);
@@ -90,6 +90,7 @@ public class UgandaEMRServiceTest extends BaseModuleContextSensitiveTest {
 
     @Test
     public void isTransferredOut_ShouldReturnFalseWhenPatientIsNotTransferredOut() {
+        Context.getPatientService();
         Patient patient = patientService.getPatient(10008);
         assertFalse(ugandaemrService.isTransferredIn(patient, new Date()));
     }
