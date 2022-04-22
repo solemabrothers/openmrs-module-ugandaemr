@@ -30,10 +30,10 @@ public class UgandaEMRServiceTest extends BaseModuleContextSensitiveTest {
     protected static final String UGANDAEMR_STANDARD_DATASET_XML = "org/openmrs/module/ugandaemr/include/standardTestDataset.xml";
 
 
-    protected UgandaEMRService ugandaemrService=null;
-    protected PatientService patientService =null;
-    protected VisitService visitService = null;
-    protected AdministrationService administrationService=null;
+    protected UgandaEMRService ugandaemrService;
+    protected PatientService patientService;
+    protected VisitService visitService;
+    protected AdministrationService administrationService;
 
     @Before
     public void setup() throws Exception {

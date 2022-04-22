@@ -13,8 +13,8 @@ import static org.openmrs.module.ugandaemr.UgandaEMRConstants.*;
 
 public class SettingsNotificationTest extends BaseModuleContextSensitiveTest {
 
-    AdministrationService administrationService=null;
-    UgandaEMRService ugandaemrService=null;
+    AdministrationService administrationService;
+    UgandaEMRService ugandaemrService;
 
     @BeforeEach
     public void setGlobalProperty() {

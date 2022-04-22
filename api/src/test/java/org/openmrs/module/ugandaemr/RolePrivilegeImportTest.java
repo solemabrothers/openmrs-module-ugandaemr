@@ -16,7 +16,7 @@ public class RolePrivilegeImportTest extends BaseModuleContextSensitiveTest {
 
     protected static final String ROLE_PRIVILLEGE_DATASET_XML = "metadata/Role_Privilege.xml";
 
-    UserService userService=null;
+    UserService userService;
 
 
     @BeforeEach
