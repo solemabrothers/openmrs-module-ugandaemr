@@ -95,3 +95,8 @@ local.properties
 .texlipse
 
 # Created by .ignore support plugin (hsz.mobi)
+
+node_modules/*
+package.json
+package-lock.json
+
