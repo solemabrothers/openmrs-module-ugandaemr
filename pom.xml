@@ -59,7 +59,7 @@
 	</modules>
 
 	<properties>
-		<openMRSVersion>2.5.4-SNAPSHOT</openMRSVersion>
+		<openMRSVersion>2.5.5</openMRSVersion>
 		<openmrsTestutilsVersion>1.3</openmrsTestutilsVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<webservices.restModuleVersion>2.36.0</webservices.restModuleVersion>
