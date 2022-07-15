@@ -1,6 +1,7 @@
 <htmlform formName="Positive Infant Audit Tool"
           formDescription=""
           formUuid="177b5d5e-dd86-11ec-9d64-0242ac120002"
+          formEncounterType="bd02a394-7ec1-4412-9061-5fedb68cbbf2"
           formVersion="1.0"
           formAddMetadata="yes"
           formUILocation="patientDashboard.overallActions"
@@ -12,7 +13,7 @@
     <style>
 
         form label, .form label {
-            float: left;
+            float: none
             padding: 0px 10px 0 0;
         }
 
@@ -83,142 +84,9 @@
                 var patientuuid = '<lookup expression="patient.uuid"/>';
                 var transferInName = getEncounterTypeName("3e8354f7-31b3-4862-a52e-ff41a1ee60af");
                 var transferOutName = getEncounterTypeName("e305d98a-d6a2-45ba-ba2a-682b497ce27c");
-                var transferDate = getValue('encounterDate.value');
-
-                jq('#encounter_type').change(function(){
-                    transferDate= getValue('encounterDate.value');
-                    var type = jq('#encounter_type option:selected').text();
-                    if(type==transferInName){
-                        setValue('transfer-in-date.value',transferDate);
-                        setValue('transfer-out-date.value','');
-                    }else if(type==transferOutName){
-                       setValue('transfer-out-date.value',transferDate);
-                        setValue('transfer-in-date.value','');
-                    }
-                });
-
-                jq('#encounterDate').change(function(){
-                    transferDate= getValue('encounterDate.value');
-                    var type = jq('#encounter_type option:selected').text();
-                    if(type==transferInName){
-                        setValue('transfer-in-date.value',transferDate);
-                        setValue('transfer-out-date.value','');
-                    }else if(type==transferOutName){
-                        setValue('transfer-out-date.value',transferDate);
-                        setValue('transfer-in-date.value','');
-                    }
-                });
-
-                // Enable disable other outcomes
-                jq('#encounter_type').change(function () {
-                    enable_disable_show_hide('encounter_type', '99109', 'Transfer In');
-                });
-
-                jq('#encounter_type').each(function () {
-                    enable_disable_show_hide('encounter_type', '99109', 'Transfer In');
-                });
-
-                jq('#encounter_type').change(function () {
-                    enable_disable_show_hide('encounter_type', 'transfer_in', 'Transfer In');
-                });
-
-                jq('#encounter_type').each(function () {
-                    enable_disable_show_hide('encounter_type', 'transfer_in', 'Transfer In');
-                });
-
-                jq('#encounter_type').change(function () {
-                    enable_disable_show_hide('encounter_type', 'transfer_out', 'Transfer Out');
-                });
-
-                jq('#encounter_type').each(function () {
-                    enable_disable_show_hide('encounter_type', 'transfer_out', 'Transfer Out');
-                });
-
-                // Enable disable other outcomes
-                jq('#encounter_type').change(function () {
-                    enable_disable_show_hide('encounter_type', '90211', 'Transfer Out');
-                });
-
-                jq('#encounter_type').each(function () {
-                    enable_disable_show_hide('encounter_type', '90211', 'Transfer Out');
-                });
-
-
-                jq('#164993').change(function () {
-                    enable_disable_show_hide('164993', 'comprehensive_transfer', 'ART Clinic');
-                });
-
-                jq('#164993').each(function () {
-                    enable_disable_show_hide('164993', 'comprehensive_transfer', 'ART Clinic');
-                });
-
-                jq('#90216').change(function () {
-                    enable_disable('90216', '90217', 'Tb Rx');
-                });
-
-                jq('#90216').each(function () {
-                    enable_disable('90216', '90217', 'Tb Rx');
-                });
-
-                jq('#90041').change(function () {
-                    enable_disable('90041', '5596', 'Yes');
-                });
-
-                jq('#90041').each(function () {
-                    enable_disable('90041', '5596', 'Yes');
-                });
-
-                jq('#99061').change(function () {
-                    enable_disable('99061', '99268', 'OTHER');
-                });
-
-                jq('#99061').each(function () {
-                    enable_disable('99061', '99268', 'OTHER');
-                });
-
-
-                // trigger a change when the form loads
-                jq("#viral-load-results-qualitative").change(function () {
-                    viral_load_widget('viral-load-results-qualitative', 'viral-load-results-copies');
-                });
-
-                jq("#viral-load-results-qualitative").each(function () {
-                    viral_load_widget('viral-load-results-qualitative', 'viral-load-results-copies');
-                });
-
-                // trigger a change when the form loads
-                jq("#viral-load-results-qualitative_1").change(function () {
-                    viral_load_widget('viral-load-results-qualitative_1', 'viral-load-results-copies_1');
-                });
-
-                jq("#viral-load-results-qualitative_1").each(function () {
-                    viral_load_widget('viral-load-results-qualitative_1', 'viral-load-results-copies_1');
-                });
             });
 
 
-            function viral_load_widget(triger, enabledDisabledId) {
-                /* Handle viral load results */
-                jq("#" + enabledDisabledId).attr("disabled", true);
-                jq("#" + triger).change(function () {
-                    var viral_load_status = getValue(triger + ".value");
-                    if (viral_load_status == 1301) {
-                        /* Detected */
-                        enableContainer("#" + enabledDisabledId);
-                        setValue(enabledDisabledId + ".value", '');
-                    }
-                    if (viral_load_status == 1306) {
-                        /* Not Detected */
-                        disableContainer("#" + enabledDisabledId);
-                        setValue(enabledDisabledId + ".value", 1);
-                    }
-                    if (viral_load_status == "" || viral_load_status == 1304) {
-                        /* Sample Rejected and no data */
-                        disableContainer("#" + enabledDisabledId);
-                        setValue(enabledDisabledId + ".value", '');
-                    }
-                });
-            }
 
             function enable_disable_show_hide(triggerId, enabledDisabledId, conditionValue) {
                 if (jq("#" + triggerId + " :selected").text() === conditionValue) {
@@ -231,16 +99,6 @@
                 }
             }
 
-            function enable_disable(triggerId, enabledDisabledId, conditionValue) {
-                disableContainer('#'+enabledDisabledId);
-                if (jq("#" + triggerId + " :selected").text() === conditionValue) {
-                    enableContainer('#' + enabledDisabledId);
-                } else if (jq('#' + triggerId).find('span').text() === conditionValue) {
-                    enableContainer('#' + enabledDisabledId);
-                } else {
-                    disableContainer('#' + enabledDisabledId);
-                }
-            }
 
             function validateRequiredFieldsByValue(triggerId, validateFieldId, triggerValue, message_to_throw, validateFieldType) {
                 var selected_value = jq("#" + triggerId).find(":selected").text().trim().toLowerCase();
@@ -272,27 +130,42 @@
             <h3 style="background: #94979A; padding: 10px;">Positive Infant Audit Form</h3>
         </div>
 
-            <div class="ai-page-frame" id="transfer_out">
-                <div class="headers" style="text-align: center;">
-                    <h3>Comprehensive HIV Care/ART Patient Referral/Transfer</h3>
-                </div>
+    <div class="card">
+
                 <section>
                     <table class="enrollment">
                         <tbody>
                         <tr>
                             <th>Patient ART History</th>
-                            <th>Baseline Lab (At Start of ART)</th>
-                            <th>Baseline Clinic Status</th>
-                        </tr>
+                            <th>Testing Information</th>
+                            <th>ART Care and Treatment</th>
+                        </tr>ƒ
                         <tr>
                             <td>
+                                Date:
+                                <encounterDate required="true"/>
+                                <span style="display: none;"/>
+
+                                <span class="hidden">
+                                <encounterType id="encounter_type"
+                                               default="bd02a394-7ec1-4412-9061-5fedb68cbbf2" required="true"/>
+                                </span>
+                                <span style="display: none;">
+                                    <encounterLocation default="629d78e9-93e5-43b0-ad8a-48313fd99117"
+                                                       order="629d78e9-93e5-43b0-ad8a-48313fd99117"/>
+                                </span>
+                                <br/>
                                 <div style="width: 100%">
-                                    <label>Infant Age:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('99061').valueCoded.name"/>
+                                <label>Infant Age:</label>
+                                <lookup complexExpression="$patient.age" />
                                 </div>
+                            </td>
+                            <td>
                                 <div style="width: 100%">
                                     <label>EXP Number</label>
-                                    <lookup class="results_style" expression="fn.latestObs('99268').valueText"/>
+                                    <patient field="identifier"
+                                             identifierTypeId="2c5b695d-4bf3-452f-8a7c-fe3ee3432ffe"
+                                             required="false"/>
                                 </div>
                                 <br/>
 
@@ -314,206 +187,97 @@
                             <td>
 
                                 <div style="width: 100%" class="lookup">
-                                    <label>Viral Load:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('163029').valueNumeric"/>
+                                    <label>Date of Positive PCR test:</label>
+                                    <lookup class="results_style" expression="fn.latestObs('163029').valueDatetime"/>
                                 </div>
                                 <br/>
-                                <div style="width: 100%" class="lookup">
-                                    <label>HB:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('163028').valueNumeric"/>
-                                </div>
-                                <br/>
-                                <div style="width: 100%" class="lookup">
-                                    <label>CD4:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('99071').valueNumeric"/>
-                                </div>
-                                <br/>
-                                <div style="width: 100%" class="lookup">
-                                    <label>CD4 (%):</label>
-                                    <lookup class="results_style" expression="fn.latestObs('99145').valueNumeric"/>
-                                </div>
-                                <br/>
-                                <div style="width: 100%" class="lookup">
-                                    <label>TLC:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('163024').valueNumeric"/>
-                                </div>
+
                             </td>
                             <td>
                                 <div style="width: 100%">
-                                    <label>Weight:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('99069').valueNumeric"/>
+                                    <label>Started on ART:</label>
+                                    <lookup class="results_style" expression="fn.latestObs('163004').valueCoded.name"/>
                                 </div>
                                 <br/>
                                 <div style="width: 100%">
-                                    <label>Height:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('163025').valueNumeric"/>
+                                    <label>ART Start Date:</label>
+                                    <lookup class="results_style" expression="fn.latestObs('162980').valueDatetime"/>
                                 </div>
                                 <br/>
                                 <div style="width: 100%">
-                                    <label>WHO Clinic Status:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('99070').valueCoded.name"/>
+                                    <label>ART Number:</label>
+                                    <lookup class="results_style" expression="fn.latestObs('99751').valueText"/>
                                 </div>
                                 <br/>
                                 <div style="width: 100%">
-                                    <label>Functional Status:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('163027').valueCoded.name"/>
-                                </div>
+                                    <label>Infant Recieved NVP/ARVs:</label>
+                                    <lookup class="results_style" expression="fn.latestObs('99787').valueCoded.name"/>
+                                </div><br/>
+                                <div style="width: 100%">
+                                    <label>Infant Feeding Options</label>
+                                    <lookup class="results_style" expression="fn.latestObs('99434').valueCoded.name"/>
+                                </div><br/>
+
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </section>
-
+                <h3 style="background: #94979A; padding: 10px;">MOTHER'S INFORMATION</h3>
                 <section>
                     <table class="enrollment">
                         <tbody>
                         <tr>
-                            <th>Current Regimen</th>
+                            <th>Mother's Information</th>
                             <th>Most Recent Lab(Date done)</th>
                             <th>Current Clinic Status</th>
                         </tr>
                         <tr>
                             <td>
-                                <div style="width: 100%">
-                                    <label>Regimen:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('90315').valueCoded.name"/>
-                                    <lookup class="results_style" expression="fn.latestObs('99126').valueText"/>
-                                </div>
-                                <div style="width: 100%">
-                                    <label>Regimen Issued until:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('90315').dateCreated"/>
-                                    <lookup class="results_style" expression="fn.latestObs('99126').dateCreated"/>
-                                </div>
+                                    <obs id="5910" conceptId="5910" labelText="Age"/>
+                                <br/>
+                                    <obs id="5910" conceptId="5910" labelText="Gestation Age at First ANC"/>
+                                <br/>
+                                    <obs id="166569" conceptId="166569" answerConceptIds="99416,165160" answerLabels="Home,Facility" labelText="Place of Delivery" />
+                                 <br/>
+                                    <obs id="166571" conceptId="166571" answerConceptIds="99738,166570,99601,90012" answerLabels="TRRK,Labour And Delivery,Breastfeeding,ANC" labelText="Timing of Positive Result" />
+                               <br/>
+                                    <obs id="166572" conceptId="166572" answerConceptIds="99152,166450,90002,1107,1067" answerLabels="Syphillis,Hep B,Other,None,Unknown" labelText="Other  STIs" />
                             </td>
                             <td>
-                                <div style="width: 100%" class="lookup">
-                                    <label>Viral Load:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('1305').valueCoded.name"/>
-                                    <lookup class="results_style" expression="fn.latestObs('856').valueNumeric"/>
-                                </div>
+                                    <obs id="166575" conceptId="166575" labelText="Period Initiated on ART:" answerConceptIds="166573,44,165973,166574" answerLabels="Before Pregnancy,During Pregnancy,At Birth,During Postnatal Period" />
                                 <br/>
-                                <div style="width: 100%" class="lookup">
-                                    <label>HB:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('21').valueNumeric"/>
-                                </div>
-                                <br/>
-                                <div style="width: 100%" class="lookup">
-                                    <label>CD4:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('5497').valueNumeric"/>
-                                </div>
-                                <br/>
-                                <div style="width: 100%" class="lookup">
-                                    <label>CD4 (%):</label>
-                                    <lookup class="results_style" expression="fn.latestObs('730').valueNumeric"/>
-                                </div>
-                                <br/>
-                                <div style="width: 100%" class="lookup">
-                                    <label>TLC:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('1021').valueNumeric"/>
-                                </div>
-                            </td>
-                            <td>
 
-                                <div style="width: 100%">
-                                    <label>Weight:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('90236').valueNumeric"/>
-                                </div>
+                                    <obs id="166576" labelText="Male Partner Status" conceptId="166576" answerConceptIds="703,664,90001" answerLabels="Positive,Negative, Unknown" />
+
                                 <br/>
-                                <div style="width: 100%">
-                                    <label>Height:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('5090').valueNumeric"/>
-                                </div>
+                                    <obs id="166579" labelText="Maternal Retention:" conceptId="166579" answerConceptIds="166577,165977,166578,1175" answerLabels="Less than 3 Months,6 Months, Greater than 12 Months, Not Applicable" />
+                            </td>
+                            <td>
+                                    <obs id="99024" labelText="Duration on ART" conceptId="99024"/>
                                 <br/>
-                                <div style="width: 100%">
-                                    <label>WHO Clinic Status:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('90203').valueCoded.name"/>
-                                </div>
+                                    <obs id="166580" labelText="Ever Missed a doze:" conceptId="166580" answerConceptIds="90003,90004" answerLabels="Yes,No" />
                                 <br/>
-                                <div style="width: 100%">
-                                    <label>Functional Status:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('90235').valueCoded.name"/>
-                                </div>
+                                    <obs id="166581" labelText="Mother Failing on Treatment:" conceptId="166581" answerConceptIds="90003,90004" answerLabels="Yes,No" />
+                                <br/>
+                                    <obs id="166582" labelText="Latest Maternal Viral Load:" conceptId="166582" answerConceptIds="44,1180,90001" answerLabels="Pregnancy,Postpartum, Unknown" />
+
                             </td>
                         </tr>
+                            <tr>
+                                <td colspan="2"><label><span class="required">*</span>Provider</label>
+                                    <encounterProvider required="true"/>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </section>
 
                 <section>
-                    <table class="enrollment">
-                        <tbody>
-                        <tr>
-                            <th>TB Status</th>
-                            <th>Other Opportunist Infections<br/> and Medications</th>
-                            <th>Pregnancy Status</th>
-                        </tr>
-                        <tr>
-
-                            <td>
-                                <div style="width: 100%">
-                                    <label>TB Status:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('90216').valueCoded.name"/>
-                                </div>
-                                <br/>
-                                <div style="width: 100%">
-                                    <label>TB Start Date:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('90217').valueDatetime"/>
-                                </div>
-                                <br/>
-                            </td>
-
-                            <td>
-                                <div style="width: 100%">
-                                    <label>Other Opportunist Infections:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('90251').valueCoded.name"/>
-                                    <lookup class="results_style" expression="fn.latestObs('99032').valueText"/>
-                                </div>
-                                <br/>
-                                <div style="width: 100%">
-                                    <label>Other Medications:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('1193').valueCoded.name"/>
-                                    <lookup class="results_style" expression="fn.latestObs('99035').valueText"/>
-                                </div>
-                            </td>
-                            <td>
-                                <excludeIf velocityTest="$patient.gender =='M' || $patient.age &lt; 9">
-                                    <div style="width: 100%">
-                                        <label>Pregnant:</label>
-                                        <lookup class="results_style"
-                                                expression="fn.latestObs('90041').valueCoded.name"/>
-                                    </div>
-
-                                    <div style="width: 100%">
-                                        <label>EDD:</label>
-                                        <lookup class="results_style" expression="fn.latestObs('5596').valueDatetime"/>
-                                        <br/>
-                                    </div>
-                                </excludeIf>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <label>Any Drug Allergies</label>
-                                <div style="width: 100%">
-                                    <label>Other Medications:</label>
-                                    <lookup class="results_style"
-                                            complexExpression="#foreach($allergy in $fn.allObs(142)) $allergy.valueText #end"/>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <label>Reasons For Transfer</label>
-                                <obs id="99387_2" class="text-box-styling" conceptId="99387" size="30" style="textarea"
-                                     rows="5"
-                                     cols="80"/>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <submit/>
                 </section>
             </div>
         </div>
         <br/>
-    <postSubmissionAction class="org.openmrs.module.ugandaemr.htmlformentry.PatientReferralPostSubmissionAction"/>
+
 </htmlform>

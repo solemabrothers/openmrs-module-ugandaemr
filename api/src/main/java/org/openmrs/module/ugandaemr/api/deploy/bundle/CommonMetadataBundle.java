@@ -14,7 +14,7 @@ public class CommonMetadataBundle extends AbstractMetadataBundle {
     /**
      * @see org.openmrs.module.metadatadeploy.bundle.AbstractMetadataBundle#install()
      */
-    public void install() throws Exception {
+    public void install() {
         // install the patient identifier types
         log.info("Installing PatientIdentifierTypes");
         install(PatientIdentifierTypes.HIV_CARE_NUMBER);
@@ -74,8 +74,8 @@ public class CommonMetadataBundle extends AbstractMetadataBundle {
         install(EncounterTypes.EMERGENCY_ART_SERVICE);
         install(EncounterTypes.CACX_SCREENING_LOG);
         install(EncounterTypes.CACX_TREATMENT_REGISTER);
+        install(EncounterTypes.POSITIVE_INFANT_AUDIT);
         install(EncounterTypes.COVID19_VACCINATION_TRACKING);
-
         install(EncounterTypes.SMS_ENROLLMENT);
 
 

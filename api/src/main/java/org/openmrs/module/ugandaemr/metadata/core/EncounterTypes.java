@@ -387,4 +387,19 @@ public class EncounterTypes {
             return "05fa932f-4203-43c9-8985-60f2bea8a773";
         }
     };
+    public static EncounterTypeDescriptor POSITIVE_INFANT_AUDIT = new EncounterTypeDescriptor() {
+        @Override
+        public String name() {
+            return "Postive Infant  Audit Tool for EID";
+        }
+
+        @Override
+        public String description() {
+            return "Postive Infant  Audit Tool for EID";
+        }
+
+        public String uuid() {
+            return "bd02a394-7ec1-4412-9061-5fedb68cbbf2";
+        }
+    };
 }
