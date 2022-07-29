@@ -136,10 +136,11 @@
                     <table class="enrollment">
                         <tbody>
                         <tr>
-                            <th>Patient ART History</th>
+                            <th>Visit Information</th>
                             <th>Testing Information</th>
+                            <th>Testing Results</th>
                             <th>ART Care and Treatment</th>
-                        </tr>ƒ
+                        </tr>
                         <tr>
                             <td>
                                 Date:
@@ -181,16 +182,27 @@
 
                                 <div style="width: 100%">
                                     <label>UNHLS Number</label>
-                                    <lookup class="results_style" expression="fn.latestObs('99606').valueDatetime"/>
                                 </div>
                             </td>
                             <td>
 
                                 <div style="width: 100%" class="lookup">
-                                    <label>Date of Positive PCR test:</label>
-                                    <lookup class="results_style" expression="fn.latestObs('163029').valueDatetime"/>
+                                    <label>First PCR test Date:</label>
+                                    <lookup class="results_style" expression="fn.latestObs('99606').valueDatetime"/>
+                                </div>
+                                <div style="width: 100%" class="lookup">
+                                    <label>First PCR test result:</label>
+                                    <lookup class="results_style" expression="fn.latestObs('99435').valueCoded.name"/>
                                 </div>
                                 <br/>
+                                <div style="width: 100%" class="lookup">
+                                    <label>PCR test Date at 9 Months :</label>
+                                    <lookup class="results_style" expression="fn.latestObs('99436').valueDatetime"/>
+                                </div>
+                                <div style="width: 100%" class="lookup">
+                                    <label> PCR test result at 9 Months:</label>
+                                    <lookup class="results_style" expression="fn.latestObs('99440').valueCoded.name"/>
+                                </div>
 
                             </td>
                             <td>

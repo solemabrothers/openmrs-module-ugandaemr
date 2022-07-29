@@ -395,10 +395,6 @@
                                                          answerLabels="Visit 1,Visit 2,Visit 3,Visit 4,Visit 5,Visit 6,Visit 7,Visit 8,Visit 9,Visit 10,Visit 11,Visit 12,Visit 13,Visit 14,Visit 15"
                                                          required="true"/>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <label>Date of Appointment</label>
-                                                    <obs conceptId="99443" allowFutureDates="true"/>
-                                                </div>
                                                 <div class="col-md-3 html-form-entry-disabled-field">
                                                     <label>Date of Visit</label>
                                                     <encounterDate default="today" disallowMultipleEncountersOnDate="block" />
