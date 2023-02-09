@@ -18,525 +18,866 @@
         var community_entry_testing_point_enabled = false;
 
         if (jQuery) {
-            jq(document).ready(function () {
+        jq(document).ready(function () {
 
-                //Block Multiple encounter entry on same date
-                blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");
+        //Block Multiple encounter entry on same date
+        blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");
 
-            <ifMode mode="EDIT">
-                if( jq("#165160").find("input").val()==''){
-                disable_fields(165160);
-                }
-                if( jq("#99416").find("input").val()==''){
-                disable_fields(99416);
-                }
-                if( jq("#162925").find("input").val()==''){
-                    disable_fields(162925);
-                }
-                if( jq("#90211").find("input").val()==''){
-                    disable_fields(90211);
-                }
-                if( jq("#99115").find("input").val()==''){
-                    disable_fields(99115);
-                }
-                if( jq("#165159").find("input").val()==''){
-                    disable_fields(165159);
-                }
-                if( jq("#165167").find("input").val()==''){
-                    disable_fields(165167);
-                }
-                if( jq("#141520").find("input").val()==''){
-                    disable_fields(141520);
-                }
-                if(jq("#165182").find("input[type$='radio']").val()==''){
-                    jq("#165182").find("input[type$='radio']").attr("disabled",true);
-                }
+        <ifMode mode="EDIT">
+            if( jq("#165160").find("input").val()==''){
+            disable_fields(165160);
+            }
+            if( jq("#99416").find("input").val()==''){
+            disable_fields(99416);
+            }
+            if( jq("#162925").find("input").val()==''){
+            disable_fields(162925);
+            }
+            if( jq("#90211").find("input").val()==''){
+            disable_fields(90211);
+            }
+            if( jq("#99115").find("input").val()==''){
+            disable_fields(99115);
+            }
+            if( jq("#165159").find("input").val()==''){
+            disable_fields(165159);
+            }
+            if( jq("#165167").find("input").val()==''){
+            disable_fields(165167);
+            }
+            if( jq("#141520").find("input").val()==''){
+            disable_fields(141520);
+            }
+            if(jq("#165182").find("input[type$='radio']").val()==''){
+            jq("#165182").find("input[type$='radio']").attr("disabled",true);
+            }
 
-              if( jq("#99369").find("input[type$='text']").val()==''){
-                jq("#99369").find("input[type$='text']").attr("disabled",true);
-              }
-              if(jq("#99477").find("input[type$='radio']").val()==''){
-                  jq("#99477").find("input[type$='radio']").attr("disabled",true);
-              }
-              if(jq("#99481").find("input[type$='radio']").val()==''){
-                  jq("#99481").find("input[type$='radio']").attr("disabled",true);
-              }
-              if(jq("#165178").find("input[type$='radio']").val()==''){
-                  jq("#165178").find("input[type$='radio']").attr("disabled",true);
-              }
-              if(jq("#165175").find("input[type$='text']").val()==''){
-                  jq("#165175").find("input[type$='text']").attr("disabled",true);
-              }
-              if(jq("#other-special-category").find("input[type$='text']").val()==''){
-                  jq("#other-special-category").find("input[type$='text']").attr("disabled",true);
-              }
-              if(jq("#165170").find("input[type$='text']").val()==''){
-                    jq("#165170").find("input[type$='text']").attr("disabled",true);
-               }
-              if(jq("#165918").find("input[type$='text']").val()==''){
-                jq("#165918").find("input[type$='text']").attr("disabled",true);
-                }
-                if(jq("#166758").find("input[type$='text']").val()==''){
-                jq("#166758").find("input[type$='text']").attr("disabled",true);
-                }
-              if(jq("#165181").find("input[type$='radio']").val()==''){
-                    jq("#165181").find("input[type$='radio']").attr("disabled",true);
-              }
-              if(jq("#162965").find("input[type$='text']").val()==''){
-                    jq("#162965").find("input[type$='text']").attr("disabled",true);
-              }
-              if(jq("#165184").find("input[type$='text']").val()==''){
-                    jq("#165184").find("input[type$='text']").attr("disabled",true);
-              }
-            </ifMode>
+            if( jq("#99369").find("input[type$='text']").val()==''){
+            jq("#99369").find("input[type$='text']").attr("disabled",true);
+            }
+            if(jq("#99477").find("input[type$='radio']").val()==''){
+            jq("#99477").find("input[type$='radio']").attr("disabled",true);
+            }
+            if(jq("#99481").find("input[type$='radio']").val()==''){
+            jq("#99481").find("input[type$='radio']").attr("disabled",true);
+            }
+            if(jq("#165178").find("input[type$='radio']").val()==''){
+            jq("#165178").find("input[type$='radio']").attr("disabled",true);
+            }
+            if(jq("#165175").find("input[type$='text']").val()==''){
+            jq("#165175").find("input[type$='text']").attr("disabled",true);
+            }
+            if(jq("#other-special-category").find("input[type$='text']").val()==''){
+            jq("#other-special-category").find("input[type$='text']").attr("disabled",true);
+            }
+            if(jq("#165170").find("input[type$='text']").val()==''){
+            jq("#165170").find("input[type$='text']").attr("disabled",true);
+            }
+            if(jq("#165918").find("input[type$='text']").val()==''){
+            jq("#165918").find("input[type$='text']").attr("disabled",true);
+            }
+            if(jq("#166758").find("input[type$='text']").val()==''){
+            jq("#166758").find("input[type$='text']").attr("disabled",true);
+            }
+            if(jq("#165181").find("input[type$='radio']").val()==''){
+            jq("#165181").find("input[type$='radio']").attr("disabled",true);
+            }
+            if(jq("#162965").find("input[type$='text']").val()==''){
+            jq("#162965").find("input[type$='text']").attr("disabled",true);
+            }
+            if(jq("#165184").find("input[type$='text']").val()==''){
+            jq("#165184").find("input[type$='text']").attr("disabled",true);
+            }
+        </ifMode>
 
-                disable_fields(165160);
-                disable_fields(162925);
-                disable_fields(90211);
-                disable_fields(99369);
-                disable_fields(99115);
-                disable_fields(165159);
-                disable_fields(165167);
-                disable_fields(141520);
-                disable_fields(165184);
-                disable_fields(165182);
-                disable_fields(9477);
-                disable_fields(99481);
-                disable_fields(165178);
-                disable_fields(165175);
-                disable_fields(165170);
-                disable_fields(165918);
-                disable_fields(166758);
-                disable_fields(162965);
-                disable_fields(165181);
-                disable_fields("other-special-category");
-                jq(".reason_for_testing_cict").hide()
-                jq(".reason_for_testing_pitc").hide()
+        disable_fields(165160);
+        disable_fields(162925);
+        disable_fields(90211);
+        disable_fields(99369);
+        disable_fields(99115);
+        disable_fields(165159);
+        disable_fields(165167);
+        disable_fields(141520);
+        disable_fields(165184);
+        disable_fields(165182);
+        disable_fields(9477);
+        disable_fields(99481);
+        disable_fields(165178);
+        disable_fields(165175);
+        disable_fields(165170);
+        disable_fields(165918);
+        disable_fields(166758);
+        disable_fields(162965);
+        disable_fields(165181);
+        disable_fields("other-special-category");
+        jq(".reason_for_testing_cict").hide()
+        jq(".reason_for_testing_pitc").hide()
 
-                <!-- Display reason for testing based on CICT/PITC hts approach -->
-                jq("#hts-approach").change(function () {
-                    if(jq(this).find("input[type$='radio']:checked").val()==162919) {
-                        jq(".reason_for_testing_cict").show()
-                        jq(".reason_for_testing_pitc").hide()
-                        disable_fields(165167)
-                    }
-                    else {
-                        jq(".reason_for_testing_cict").hide()
-                        jq(".reason_for_testing_pitc").show()
-                        disable_fields(165167)
-                    }
-                });
+        <!-- Display reason for testing based on CICT/PITC hts approach -->
+        jq("#hts-approach").change(function () {
+        if(jq(this).find("input[type$='radio']:checked").val()==162919) {
+        jq(".reason_for_testing_cict").show()
+        jq(".reason_for_testing_pitc").hide()
+        disable_fields(165167)
+        }
+        else {
+        jq(".reason_for_testing_cict").hide()
+        jq(".reason_for_testing_pitc").show()
+        disable_fields(165167)
+        }
+        });
 
-                jq(".reason_for_testing_cict").change(function () {
-                    if(jq(this).find(":selected").val()==90002)
-                        enable_fields(165167)
-                    else
-                        disable_fields(165167)
-                });
+        jq(".reason_for_testing_cict").change(function () {
+        if(jq(this).find(":selected").val()==90002)
+        enable_fields(165167)
+        else
+        disable_fields(165167)
+        });
 
-                <!-- Enable HTC Delivery Model-->
-                jq("#165171").change(function () {
-                var hts_Delivery_Model  = getValue('165171.value');
+        <!-- Enable HTC Delivery Model-->
+        jq("#165171").change(function () {
+        var hts_Delivery_Model  = getValue('165171.value');
 
-                if(hts_Delivery_Model == 99416 ){
-                    disable_fields(165160);
-                    enable_fields(162925);
-                    disable_fields(165159);
-                    facility_entry_point_enabled= true;
-                    community_entry_testing_point_enabled= false;
-                }
-                else if(hts_Delivery_Model == 165160){
-                    disable_fields(162925);
-                    enable_fields(165160);
-                    disable_fields(99115);
-                    community_entry_testing_point_enabled= true;
-                    facility_entry_point_enabled= false;
-                }
-                else{
-                    disable_fields(165160);
-                    disable_fields(162925);
-                }
-                });
+        if(hts_Delivery_Model == 99416 ){
+        disable_fields(165160);
+        enable_fields(162925);
+        disable_fields(165159);
+        facility_entry_point_enabled= true;
+        community_entry_testing_point_enabled= false;
+        }
+        else if(hts_Delivery_Model == 165160){
+        disable_fields(162925);
+        enable_fields(165160);
+        disable_fields(99115);
+        community_entry_testing_point_enabled= true;
+        facility_entry_point_enabled= false;
+        }
+        else{
+        disable_fields(165160);
+        disable_fields(162925);
+        }
+        });
 
-                <!-- Enable place of referral -->
-                jq('#162982').change(function () {
-                    if(getValue('162982' + '.value')== 1065)
-                        enable_fields(90211);
-                    else
-                        disable_fields(90211);
-                });
+        <!-- Enable place of referral -->
+        jq('#162982').change(function () {
+        if(getValue('162982' + '.value')== 1065)
+        enable_fields(90211);
+        else
+        disable_fields(90211);
+        });
 
-                <!-- Enable HIV Test date -->
-                jq('#165180').change(function () {
-                    if(getValue('165180' + '.value')== 90004) {
-                        enable_fields(165170);
-                        enable_fields(165181);
-                        enable_fields(162965);
-                        enable_fields(166758);
-                        enable_fields(165918);
-                    }
-                    else {
-                        disable_fields(165170);
-                        disable_fields(165181);
-                        disable_fields(162965);
-                        disable_fields(166758);
-                        disable_fields(166758);
+        <!-- Enable HIV Test date -->
+        jq('#165180').change(function () {
+        if(getValue('165180' + '.value')== 90004) {
+        enable_fields(165170);
+        enable_fields(165181);
+        enable_fields(162965);
+        enable_fields(166758);
+        enable_fields(165918);
+        }
+        else {
+        disable_fields(165170);
+        disable_fields(165181);
+        disable_fields(162965);
+        disable_fields(166758);
+        disable_fields(166758);
 
         }
+        });
+
+        <!--Enable HIV spouse test field-->
+        jq('#99472').change(function () {
+        if(getValue('99472' + '.value')== 1065)
+        enable_fields(99477);
+        else
+        disable_fields(99477);
+        });
+
+        jq('#90251').change(function () {
+        if(getValue('90251' + '.value')== 90002)
+        enable_fields(165184);
+        else
+        disable_fields(165184);
+        });
+
+        <!--Enable pre test counselling-->
+        jq('#162918').change(function () {
+        if(getValue('162918' + '.value')== 90003)
+        enable_fields(99368);
+        else
+        disable_fields(99368);
+        });
+
+        <!--Enable Results received as a couple -->
+        jq('#99494').change(function () {
+        if(getValue('99494' + '.value')== 1065)
+        enable_fields(99497);
+        else
+        disable_fields(99497);
+        });
+
+        <!-- other specify handling -->
+        jq('#969').change(function () {
+        if(getValue('969' + '.value')== 5620)
+        enable_fields(99369);
+        else
+        disable_fields(99369);
+        });
+
+        jq('#162925').change(function () {
+        if(getValue('162925' + '.value')== 90002)
+        enable_fields(99115);
+        else
+        disable_fields(99115);
+        });
+
+        jq('#165160').change(function () {
+        if(getValue('165160' + '.value')== 90002)
+        enable_fields(165159);
+        else
+        disable_fields(165159);
+        });
+
+        jq('#165168').change(function () {
+        if(getValue('165168' + '.value')== 90002)
+        enable_fields(165167);
+        else
+        disable_fields(165167);
+        });
+
+        <includeIf velocityTest="$fn.globalProperty('ugandaemr.hts.recency') == true">
+            <excludeIf velocityTest="$patient.age &lt; 15">
+
+                jq('#99493').change(function () {
+                if(getValue('99493' + '.value')== 90166)
+                enable_fields(99481);
+                else
+                disable_fields(99481);
                 });
 
-                <!--Enable HIV spouse test field-->
-                jq('#99472').change(function () {
-                    if(getValue('99472' + '.value')== 1065)
-                        enable_fields(99477);
-                    else
-                        disable_fields(99477);
-                });
+            </excludeIf>
+        </includeIf>
 
-                jq('#165169').change(function () {
-                    if(getValue('165169' + '.value')== 90002)
-                        enable_fields(165184);
-                    else
-                        disable_fields(165184);
-                });
+        jq('#99498').change(function () {
+        if(getValue('99498' + '.value')== 1065)
+        enable_fields(165178);
+        else
+        disable_fields(165178);
+        });
 
-                <!--Enable pre test counselling-->
-                jq('#162918').change(function () {
-                    if(getValue('162918' + '.value')== 90003)
-                        enable_fields(99368);
-                    else
-                        disable_fields(99368);
-                });
+        jq('#form-id').change(function () {
+        if(getValue('99493' + '.value')== 90166 ){
+        enable_fields('99493');
+        enable_fields('165182');
+        if( getValue('99481' + '.value')== 1065){
+        enable_fields(141520);
+        }
+        else if( getValue('99481' + '.value')== 1066){
+        disable_fields(141520);
+        }else{
+        disable_fields(141520);
+        }
+        }else{
+        disable_fields(141520);
+        disable_fields('165182');
+        }
+        });
 
-                <!--Enable Results received as a couple -->
-                jq('#99494').change(function () {
-                    if(getValue('99494' + '.value')== 1065)
-                        enable_fields(99497);
-                    else
-                        disable_fields(99497);
-                });
+        jq('#other-prevention-services').change(function(){
+        if(!jq('#other-prevention-services').find(':checkbox').prop('checked')){
+        jq("#165175").find("input[type$='text']").attr("disabled",true);
+        jq("#165175").find("input[type$='text']").val("");
+        }
+        else
+        enable_fields(165175);
+        });
 
-                <!-- other specify handling -->
-                jq('#969').change(function () {
-                    if(getValue('969' + '.value')== 5620)
-                        enable_fields(99369);
-                    else
-                        disable_fields(99369);
-                });
+        jq('#other-special-category').change(function(){
+        if(!jq('#other-special-category').find(':checkbox').prop('checked')){
+        jq("#other-special-category").find("input[type$='text']").attr("disabled",true);
+        jq("#other-special-category").find("input[type$='text']").val("");
+        }else{
+        jq("#other-special-category").find("input[type$='text']").attr("disabled",false); }
+        });
 
-                jq('#162925').change(function () {
-                    if(getValue('162925' + '.value')== 90002)
-                        enable_fields(99115);
-                    else
-                        disable_fields(99115);
-                });
+        /* add JQuery validator classes and rules*/
+        jq("#nationalid input:text").addClass("nationalid");
 
-                jq('#165160').change(function () {
-                    if(getValue('165160' + '.value')== 90002)
-                        enable_fields(165159);
-                    else
-                        disable_fields(165159);
-                });
+        /* add the validator on the beforeSubmit*/
+        beforeSubmit.push(function () {
+        jq("#htmlform").validate();
+        return jq("#htmlform").valid();
+        }
+        );
 
-                jq('#165168').change(function () {
-                    if(getValue('165168' + '.value')== 90002)
-                        enable_fields(165167);
-                    else
-                        disable_fields(165167);
-                });
+        });
 
-                <includeIf velocityTest="$fn.globalProperty('ugandaemr.hts.recency') == true">
-                    <excludeIf velocityTest="$patient.age &lt; 15">
+        function disable_fields(groupId){
+        var disable = true;
+        var group = jq("#"+groupId);
+        group.find("input").attr("disabled", disable);
+        group.find('select').attr("disabled", disable);
 
-                        jq('#99493').change(function () {
-                            if(getValue('99493' + '.value')== 90166)
-                                enable_fields(99481);
-                            else
-                                disable_fields(99481);
-                        });
+        if (disable) {
+        /* fade out the fields that are disabled */
+        group.find("input").fadeTo(250, 0.25);
+        group.find("select").fadeTo(250, 0.25);
+        } else {
+        /* remove the fade on the fields */
+        group.find("input").fadeTo(250, 1);
+        group.find("select").fadeTo(250, 1);
+        }
+        }
 
-                    </excludeIf>
-                </includeIf>
+        function enable_fields(group){
+        var disable = false;
+        var group = jq("#"+group);
+        group.find("input").attr("disabled", disable);
+        group.find('select').attr("disabled", disable);
 
-                jq('#99498').change(function () {
-                    if(getValue('99498' + '.value')== 1065)
-                        enable_fields(165178);
-                    else
-                        disable_fields(165178);
-                });
+        if (!disable) {
+        /* remove the fade on the fields */
+        group.find("input").fadeTo(250, 1);
+        group.find("select").fadeTo(250, 1);
+        }
+        }
 
-                jq('#form-id').change(function () {
-                    if(getValue('99493' + '.value')== 90166 ){
-                        enable_fields('99493');
-                        enable_fields('165182');
-                        if( getValue('99481' + '.value')== 1065){
-                            enable_fields(141520);
-                        }
-                        else if( getValue('99481' + '.value')== 1066){
-                            disable_fields(141520);
-                        }else{
-                            disable_fields(141520);
-                        }
-                    }else{
-                        disable_fields(141520);
-                        disable_fields('165182');
-                    }
-                });
+        function enable_disable(triggerId, enabledDisabledId, conditionValue) {
+        if (getValue(triggerId + '.value') == conditionValue){
 
-                jq('#other-prevention-services').change(function(){
-                    if(!jq('#other-prevention-services').find(':checkbox').prop('checked')){
-                        jq("#165175").find("input[type$='text']").attr("disabled",true);
-                        jq("#165175").find("input[type$='text']").val("");
-                    }
-                    else
-                        enable_fields(165175);
-                });
+        enableContainer('#' + enabledDisabledId);
+        }
+        else {
+        if(getValue(enabledDisabledId+'.value')!=''){
+        setValue(enabledDisabledId+'.value', '');
+        }
+        disableContainer('#' + enabledDisabledId);
+        }
 
-                jq('#other-special-category').change(function(){
-                    if(!jq('#other-special-category').find(':checkbox').prop('checked')){
-                        jq("#other-special-category").find("input[type$='text']").attr("disabled",true);
-                        jq("#other-special-category").find("input[type$='text']").val("");
-                    }else{
-                        jq("#other-special-category").find("input[type$='text']").attr("disabled",false); }
-                });
+        }
 
-                /* add JQuery validator classes and rules*/
-                jq("#nationalid input:text").addClass("nationalid");
+        beforeSubmit.push(function () {
+        setValue('162925.error', '');
+        setValue('165160.error', '');
+        setValue('99115.error', '');
+        setValue('165159.error', '');
+        setValue('165167.error', '');
 
-                /* add the validator on the beforeSubmit*/
-                beforeSubmit.push(function () {
-                        jq("#htmlform").validate();
-                        return jq("#htmlform").valid();
-                    }
-                );
+        var submitVal = true;
+        var submitValStage = [];
+        if( jq("#162925").find("select").find(":selected").val()== '' &amp;&amp; facility_entry_point_enabled ){
+        getField('162925.error').html('Select one of the options ').show();
+        return false;
+        }
+        if( jq("#165160").find("select").find(":selected").val()== '' &amp;&amp; community_entry_testing_point_enabled ){
+        getField('165160.error').html('Select one of the options ').show();
+        return false;
+        }
+        if(! jq("#162925").find("select").is(':disabled') &amp;&amp; jq("#162925").find("select").find(":selected").val()== 90002 &amp;&amp; jq("#99115").find("input[type$='text']").val()=='') {
+        getField('99115.error').html('Required text field is empty').show();
+        return false;
+        }
+        if(! jq("#165160").find("select").is(':disabled') &amp;&amp; jq("#165160").find("select").find(":selected").val()== 90002 &amp;&amp; jq("#165159").find("input[type$='text']").val()=='') {
+        getField('165159.error').html('Required text field is empty').show();
+        return false;
+        }
+        if(! jq("#165168").find("select").is(':disabled') &amp;&amp; jq("#165168").find("select").find(":selected").val()== 90002 &amp;&amp; jq("#165167").find("input[type$='text']").val()=='') {
+        getField('165167.error').html('Required text field is empty').show();
+        return false;
+        }
 
-            });
-
-            function disable_fields(groupId){
-                var disable = true;
-                var group = jq("#"+groupId);
-                group.find("input").attr("disabled", disable);
-                group.find('select').attr("disabled", disable);
-
-                if (disable) {
-                    /* fade out the fields that are disabled */
-                    group.find("input").fadeTo(250, 0.25);
-                    group.find("select").fadeTo(250, 0.25);
-                } else {
-                    /* remove the fade on the fields */
-                    group.find("input").fadeTo(250, 1);
-                    group.find("select").fadeTo(250, 1);
-                }
-            }
-
-            function enable_fields(group){
-                var disable = false;
-                var group = jq("#"+group);
-                group.find("input").attr("disabled", disable);
-                group.find('select').attr("disabled", disable);
-
-                if (!disable) {
-                    /* remove the fade on the fields */
-                    group.find("input").fadeTo(250, 1);
-                    group.find("select").fadeTo(250, 1);
-                }
-            }
-
-            function enable_disable(triggerId, enabledDisabledId, conditionValue) {
-                if (getValue(triggerId + '.value') == conditionValue){
-
-                    enableContainer('#' + enabledDisabledId);
-                }
-                else {
-                    if(getValue(enabledDisabledId+'.value')!=''){
-                        setValue(enabledDisabledId+'.value', '');
-                    }
-                    disableContainer('#' + enabledDisabledId);
-                }
-
-            }
-
-            beforeSubmit.push(function () {
-                setValue('162925.error', '');
-                setValue('165160.error', '');
-                setValue('99115.error', '');
-                setValue('165159.error', '');
-                setValue('165167.error', '');
-
-                var submitVal = true;
-                var submitValStage = [];
-               if( jq("#162925").find("select").find(":selected").val()== '' &amp;&amp; facility_entry_point_enabled ){
-                   getField('162925.error').html('Select one of the options ').show();
-                   return false;
-               }
-               if( jq("#165160").find("select").find(":selected").val()== '' &amp;&amp; community_entry_testing_point_enabled ){
-                  getField('165160.error').html('Select one of the options ').show();
-                  return false;
-               }
-               if(! jq("#162925").find("select").is(':disabled') &amp;&amp; jq("#162925").find("select").find(":selected").val()== 90002 &amp;&amp; jq("#99115").find("input[type$='text']").val()=='') {
-                   getField('99115.error').html('Required text field is empty').show();
-                   return false;
-               }
-               if(! jq("#165160").find("select").is(':disabled') &amp;&amp; jq("#165160").find("select").find(":selected").val()== 90002 &amp;&amp; jq("#165159").find("input[type$='text']").val()=='') {
-                    getField('165159.error').html('Required text field is empty').show();
-                    return false;
-               }
-               if(! jq("#165168").find("select").is(':disabled') &amp;&amp; jq("#165168").find("select").find(":selected").val()== 90002 &amp;&amp; jq("#165167").find("input[type$='text']").val()=='') {
-                    getField('165167.error').html('Required text field is empty').show();
-                    return false;
-               }
-
-                return true;
-            });
+        return true;
+        });
         }
 
     </script>
 
-<div id="form-id">
-    <div class="row">
-        <div class="col-md-6">
-            <h1>HIV DEATH REVIEW FORM</h1>
+    <div id="form-id">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>HIV DEATH REVIEW FORM</h1>
+            </div>
+            <div class="col-md-5"></div>
+            <div class="col-md-1">
+                <submit class="confirm" submitLabel="Save" submitStyle="customSubmit" />
+            </div>
         </div>
-        <div class="col-md-5"></div>
-        <div class="col-md-1">
-            <submit class="confirm" submitLabel="Save" submitStyle="customSubmit" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <ul class="nav nav-tabs nav-fill card-header-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#visit-details">Life Style/HIV Care and Treatment</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#risk-assessment">Comorbidities</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#hiv-test-result">Admission History</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#hiv-test-result">Community Section/Certified Cause of Death</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="Life_style_details">
-                            <div class="card">
-                                <div class="card-header">
-                                    Life Style and Social Factors prior to death
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs nav-fill card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#Life_style_details">Life Style/HIV Care and Treatment</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#comorbidities">Comorbidities</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#admission-history">Admission History</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#community-section">Community Section/Certified Cause of Death</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Life_style_details">
+                                <div class="card">
+                                    <div class="card-header">Life Style and Social Factors prior to death</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header">Ongoing factors in the year prior to death</div>
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label>Cigarette Smoking</label>
+                                                                    <obs id="smoking" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label>Excessive alcohol consumption</label>
+                                                                    <obs id="alcohol" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label>Active illicit injecting drug use</label>
+                                                                    <obs id="drug_use" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label>Active illicit non-injecting drug us</label>
+                                                                    <obs id="drug_use" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label>Opiate substitution(methadone)</label>
+                                                                    <obs id="methadone" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label>Poor adherence</label>
+                                                                    <obs id="alcohol" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label>Malnutrition</label>
+                                                                    <obs id="malnutrition" conceptId="68" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label>key population</label>
+                                                                    <obs id="priority_population" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label>Priority population</label>
+                                                                    <obs id="alcohol" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card">
-                                                <div class="card-header">Ongoing factors in the year prior to death</div>
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label>Cigarette Smoking</label>
-                                                            <obs id="smoking" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label>Excessive alcohol consumption</label>
-                                                            <obs id="alcohol" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label>Active illicit injecting drug use</label>
-                                                            <obs id="drug_use" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label>Active illicit non-injecting drug us</label>
-                                                            <obs id="drug_use" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label>Opiate substitution(methadone)</label>
-                                                            <obs id="methadone" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label>Poor adherence</label>
-                                                            <obs id="alcohol" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label>Malnutrition</label>
-                                                            <obs id="malnutrition" conceptId="68" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label>key population</label>
-                                                            <obs id="priority_population" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label>Priority population</label>
-                                                            <obs id="alcohol" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                <div class="card">
+                                    <div class="card-header">Others specify</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Disclosure</label>
+                                                <obs id="disclosure" conceptId="5616"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,Not Applicable" class="horizontal" style="radio"/>
                                             </div>
-                                            <div class="card">
-                                                <div class="card-header">Others specify</div>
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-md-4">
-                                                            <label>Disclosure</label>
-                                                            <obs id="disclosure" conceptId="5616"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,Not Applicable" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label>History of GBV</label>
-                                                            <obs id="disclosure" conceptId="90012"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,Not Applicable" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label>OVC</label>
-                                                            <obs id="ovc" conceptId="165200"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,Not Applicable" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label>Stigma</label>
-                                                            <obs id="stigma" conceptId="90012"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,Not Applicable" class="horizontal" style="radio"/>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label>Risk sexual behaviors</label>
-                                                            <obs id="risk_sexual_behavior" conceptId="90012"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,Not Applicable" class="horizontal" style="radio"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="col-md-4">
+                                                <label>History of GBV</label>
+                                                <obs id="disclosure" conceptId="90012"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,Not Applicable" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>OVC</label>
+                                                <obs id="ovc" conceptId="165200"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,Not Applicable" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Stigma</label>
+                                                <obs id="stigma" conceptId="90012"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,Not Applicable" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Risk sexual behaviors</label>
+                                                <obs id="risk_sexual_behavior" conceptId="90012"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,Not Applicable" class="horizontal" style="radio"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header">HIV Care and Treatment</div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>Had the deceased EVER received ART?</label>
-                                            <obs id="ever-received-ART" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>If YES, when the earliest ART started</label>
+
+                                <div class="card">
+                                    <div class="card-header">HIV Care and Treatment</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Had the deceased EVER received ART?</label>
+                                                <obs id="ever-received-ART" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>If YES, when the earliest ART started</label>
                                                 <obs class="return-date-poc" id="returndate" conceptId="5096" allowFutureDates="true"/>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Was the patient still on ART at the time of death?</label>
-                                            <obs id="still-on-ART" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>If YES, current ART Regimen before death</label>
-                                            <obs id="90315" conceptId="90315" />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <obs id="duration-on-current-Regimen" conceptId="164975" labelText="Duration on current Regimen(months)"/>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <obs id="duration-off-ART" conceptId="164975" labelText="If No, Duration off ART(months)"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Was the patient still on ART at the time of death?</label>
+                                                <obs id="still-on-ART" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>If YES, current ART Regimen before death</label>
+                                                <obs id="90315" conceptId="90315" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <obs id="164975" conceptId="164975" labelText="Duration on current Regimen(months)"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <obs id="duration-off-ART" conceptId="164975" labelText="If No, Duration off ART(months)"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                </div>
+
                             </div>
                         </div>
+                            <div class="tab-pane" id="comorbidities" >
+                                <div class="card">
+                                    <div class="card-header">Opportunistic Infection</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="160156" answerLabel="M. tuberculosis" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="116023" answerLabel="Cervical cancer, Invasive" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="5033" answerLabel="Extrapulmonary Cryptococcosis" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="5034" answerLabel="Cryptosporidiosis, chronic intestinal" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="138706" answerLabel="Herpes simplex" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="5038" answerLabel="Histoplasmosis" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="5041" answerLabel="Non Hodgkin's Lymphoma" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="5041" answerLabel="Atypical Mycobacterial infections" style="checkbox"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="5017" answerLabel="CMV disease" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="5345" answerLabel="Encephalopathy, including AIDS Dementia Complex" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="165127" answerLabel="Disseminated Candiasis" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="90041" answerLabel="Pneuocystis Jirovencil Pneumonia" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="5046" answerLabel="Progressive multifocal leukoencephalopathy" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="90041" answerLabel="Microsporidiosis" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="90041" answerLabel="PJP, extrapulmonary" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="90041" answerLabel="Isosporiasis, chronic intestinal" style="checkbox"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="5354" answerLabel="Samonella septicemia" tyle="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" answerConceptId="990" answerLabel="Toxoplasmosis of brain" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" id="90251" answerConceptId="5339" answerLabel="Weight loss (over 10%)" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" id="90251" answerConceptId="90002" answerLabel="Aspergillosis, invasive" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" id="90251" answerConceptId="90002" answerLabel="Bartonellosis" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" id="90251" answerConceptId="117543" answerLabel="Herpes zoster, multi-dermatomal" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" id="90251" answerConceptId="117543" answerLabel="Lumphoma, non-Hodgkin's, all cell types" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="90251" id="90251" answerConceptId="507" answerLabel="Kaposi's Sarcoma" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>TB specify site of TB</label>
+                                                <obs conceptId="99463"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Other Opportunistic Infections specify</label>
+                                                <obs conceptId="99463"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">Did the deceased present with any of the following conditions?</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Hypertension</label>
+                                                <obs id="99644" conceptId="99644" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>If YES, indicate treatment</label>
+                                                <obs conceptId="99463"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Diabetes Mellitus</label>
+                                                <obs id="119481" conceptId="119481" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>If YES, indicate treatment</label>
+                                                <obs conceptId="99463"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Mental illness</label>
+                                                <obs id="90251" conceptId="90251" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>If YES, indicate treatment</label>
+                                                <obs conceptId="99463"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Renal disease</label>
+                                                <obs id="6033" conceptId="90251" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>If YES, indicate treatment</label>
+                                                <obs conceptId="99463"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Cardiovascular diseases</label>
+                                                <obs id="119270" conceptId="90251" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>If YES, indicate treatment</label>
+                                                <obs conceptId="99463"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Cancers</label>
+                                                <obs id="116030" conceptId="90251" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>If YES, indicate treatment</label>
+                                                <obs conceptId="99463"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Liver disease</label>
+                                                <obs id="119481" conceptId="119481" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>If YES, indicate treatment</label>
+                                                <obs conceptId="99463"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">Pregnancy</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Timing of maternal death</label>
+                                                <obs conceptId="165212" answerConceptIds="160737,165208,165209,90001" answerLabels="Tick if she was pregnant at time of death, Tick if she died within 42 days after delivery, Between 43 days upto 1 year of death, Unknown" style="dropdown"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Parity</label>
+                                                <obs conceptId="99463"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Place of delivery</label>
+                                                <obs conceptId="5630" answerConceptIds="165235,165208,1171" answerLabels="SVD, Assisted, Cesarean" style="dropdown"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Delivered by skilled attendant</label>
+                                                <obs conceptId="99570" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">Adverse events attributed to death</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <obs conceptId="99175" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" labelText="Was the death considered to be related to a medical treatment?" style="radio" class="horizontal"/>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <obs conceptId="90269" answerConceptIds="1088,99648" answerLabels="Antiretrovial treatment,Other medical treatment" labelText="The suspected relation was to" style="radio" class="horizontal"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <label>Please provide a brief narrative of the suspected association including the name of the medication and the date of starting
+                                                (time intervals can be included in brackets after the condition)</label>
+                                                <obs conceptId="99256" class="commenttextarea" style="textarea"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane" id="hiv-test-result" >
+                                <div class="card">
+                                    <div class="card-header">
+                                        HIV Test Results
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>HIV final test results</label>
+                                                <obs id="99493" conceptId="99493" answerConceptIds="90167,90166,162926" answerLabels="1 - Negative,2 - Positive,3 - Inconclusive" style="radio" class="horizontal" required="true"/>
+                                            </div>
+                                            <includeIf velocityTest="$patient.gender == 'F'">
+                                                <div class="col-md-4">
+                                                    <label>HIV final Syphillis-Duo results</label>
+                                                    <obs id="br" conceptId="165172" answerConceptIds="1228,1229" answerLabels="1 - Reactive,2 - Non-Reactive" style="radio" class="horizontal"/>
+
+                                                </div>
+                                            </includeIf>
+                                        </div>
+                                    </div>
+                                </div>
+                                <includeIf velocityTest="$fn.globalProperty('ugandaemr.hts.recency') == true">
+                                    <excludeIf velocityTest="$patient.age &lt; 15">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Recency Testing
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Do you agree to have blood drawn for recency?</label>
+                                                        <obs id="99481" conceptId="99481" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>HIV recency test result</label>
+                                                        <obs id="141520" conceptId="141520" answerConceptIds="141519,141518" answerLabels="1 - Long term infection ,2 - Recent infection"/>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </excludeIf>
+                                </includeIf>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        Other Testing Information
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>If tested HIV positive finger print has been  captured</label>
+                                                <obs id="165182" conceptId="165182" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Results received as individual</label>
+                                                <obs conceptId="165183" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Results received as a couple</label>
+                                                <obs conceptId="99494" id="99494" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Couple results:</label>
+                                                <obs conceptId="99497" id="99497" answerConceptIds="6096,165173,165174" answerLabels="1 - Discordant Couple,2 - Concordant Negative,3 - Concordant positive"  class="horizontal"/>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Client has presumptive TB</label>
+                                                <obs conceptId="99498" id="99498" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Presumptive TB case referred for TB Services</label>
+                                                <obs id="165178" conceptId="165178" answerConceptIds="90003,90004" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        Prevention Services and Referral
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <obs conceptId="165177" answerConceptId="99511" answerLabel="1 - Prevention Information" style="checkbox" class="horizontal-layout-options" />
+                                                <obs conceptId="165177" answerConceptId="90083" answerLabel="2 - Condoms" style="checkbox" class="horizontal-layout-options" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="165177" answerConceptId="99550" answerLabel="3 - STI Screening" style="checkbox" class="horizontal-layout-options" />
+                                                <obs conceptId="165177" answerConceptId="99553" answerLabel="4 - STI treatment" style="checkbox" class="horizontal-layout-options" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="165177" answerConceptId="165176" answerLabel="5 - Post-GBV" style="checkbox" class="horizontal-layout-options" />
+                                                <obs conceptId="165177" answerConceptId="99056" answerLabel="6 - PEP" style="checkbox" class="horizontal-layout-options" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="165177" answerConceptId="165163" answerLabel="7 - PREP" style="checkbox" class="horizontal-layout-options" />
+                                                <obs conceptId="165177" id="other-prevention-services" answerConceptId="90002" answerLabel="8 - Others" style="checkbox" class="horizontal-layout-options" />
+                                                <span><label>Other prevention services</label>
+                                                    <obs id="165175" conceptId="165175" class="horizontal-layout-options"/>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Client has been referred for HIV care or other prevention services </label>
+                                                <obs id="162982" conceptId="162982" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No"  style="radio" class="horizontal"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Place of referral</label>
+                                                <obs id="90211" conceptId="90211" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label><span class="required">*</span>Counselor</label>
+                                        <encounterProvider required="true"/>
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
