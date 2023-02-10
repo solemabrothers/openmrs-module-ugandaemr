@@ -714,11 +714,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <label>Delivered by skilled attendant</label>
-                                                <obs conceptId="99570" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                <obs id="119481" conceptId="119481" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Don't know" class="horizontal" style="radio"/>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -729,7 +728,6 @@
                                             <div class="col-md-8">
                                                 <obs conceptId="99175" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" labelText="Was the death considered to be related to a medical treatment?" style="radio" class="horizontal"/>
                                             </div>
-
                                         </div>
                                         <div class="row">
                                             <div class="col-md-8">
@@ -745,136 +743,118 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="tab-pane" id="hiv-test-result" >
+                            <div class="tab-pane" id="community-section" >
                                 <div class="card">
-                                    <div class="card-header">
-                                        HIV Test Results
-                                    </div>
+                                    <div class="card-header">Community Section (This section shall be administered to the people who provided care to the deceased before death)</div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <label>HIV final test results</label>
-                                                <obs id="99493" conceptId="99493" answerConceptIds="90167,90166,162926" answerLabels="1 - Negative,2 - Positive,3 - Inconclusive" style="radio" class="horizontal" required="true"/>
+                                            <div class="col-md-12">
+                                                <label>Community section - When the death occurs in the community as identified during missed
+                                                appointment tracking, or by information received from secondary facility, care giver, expert client or CLF.</label>
                                             </div>
-                                            <includeIf velocityTest="$patient.gender == 'F'">
-                                                <div class="col-md-4">
-                                                    <label>HIV final Syphillis-Duo results</label>
-                                                    <obs id="br" conceptId="165172" answerConceptIds="1228,1229" answerLabels="1 - Reactive,2 - Non-Reactive" style="radio" class="horizontal"/>
-
-                                                </div>
-                                            </includeIf>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Specify place of death e.g., Home, Road Traffic accident, Shrine</label>
+                                                <obs id="165265" conceptId="165265" class="otherpdhpcomponents" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Was the deceased on ART?</label>
+                                                <obs id="119481" conceptId="119481" answerConceptIds="90003,90004" answerLabels="Yes,No" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>If on ART, when was the last date of ART refill</label>
+                                                <obs class="return-date-poc" id="returndate" conceptId="5096" allowFutureDates="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Was the deceased admitted in the last one month?</label>
+                                                <obs id="119481" conceptId="119481" answerConceptIds="90003,90004" answerLabels="Yes,No" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>If the deceased was admitted, indicate place of admission</label>
+                                                <obs id="165265" conceptId="165265" class="otherpdhpcomponents" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>What was the deceased complaining about when s/he was taken to the health facility?</label>
+                                                <obs conceptId="99256" class="commenttextarea" style="textarea"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>What were the main complaints before death?</label>
+                                                <obs conceptId="99256" class="commenttextarea" style="textarea"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>What was the likely cause of death?</label>
+                                                <obs conceptId="99256" class="commenttextarea" style="textarea"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Brief narrative of the sequence of events leading to death (please include means of diagnosis of illness)</label>
+                                                <obs conceptId="99256" class="commenttextarea" style="textarea"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <includeIf velocityTest="$fn.globalProperty('ugandaemr.hts.recency') == true">
-                                    <excludeIf velocityTest="$patient.age &lt; 15">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                Recency Testing
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <label>Do you agree to have blood drawn for recency?</label>
-                                                        <obs id="99481" conceptId="99481" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label>HIV recency test result</label>
-                                                        <obs id="141520" conceptId="141520" answerConceptIds="141519,141518" answerLabels="1 - Long term infection ,2 - Recent infection"/>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </excludeIf>
-                                </includeIf>
-
                                 <div class="card">
-                                    <div class="card-header">
-                                        Other Testing Information
-                                    </div>
+                                    <div class="card-header">Certified Cause of Death (Indicate the final cause of death)</div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <label>If tested HIV positive finger print has been  captured</label>
-                                                <obs id="165182" conceptId="165182" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+                                            <div class="col-md-5">
+                                                <label>Report disease or condition directly leading to death on line a</label>
                                             </div>
-                                            <div class="col-md-3">
-                                                <label>Results received as individual</label>
-                                                <obs conceptId="165183" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+                                            <div class="col-md-5">
+                                                <label>Report chain of events 'due to' (b to d) in order(if applicable)</label>
                                             </div>
-                                            <div class="col-md-3">
-                                                <label>Results received as a couple</label>
-                                                <obs conceptId="99494" id="99494" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Couple results:</label>
-                                                <obs conceptId="99497" id="99497" answerConceptIds="6096,165173,165174" answerLabels="1 - Discordant Couple,2 - Concordant Negative,3 - Concordant positive"  class="horizontal"/>
-                                            </div>
-
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label>Client has presumptive TB</label>
-                                                <obs conceptId="99498" id="99498" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
+                                                <label>a</label>
+                                                <obs id="165265" conceptId="165265" class="otherpdhpcomponents" />
                                             </div>
-                                            <div class="col-md-4">
-                                                <label>Presumptive TB case referred for TB Services</label>
-                                                <obs id="165178" conceptId="165178" answerConceptIds="90003,90004" answerLabels="1 - Yes,2 - No" style="radio" class="horizontal"/>
-
+                                            <div class="col-md-2">
+                                                <label>b-Due to</label>
+                                                <obs id="165265" conceptId="165265" class="otherpdhpcomponents" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>c-Due to</label>
+                                                <obs id="165265" conceptId="165265" class="otherpdhpcomponents" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>d-Due to</label>
+                                                <obs id="165265" conceptId="165265" class="otherpdhpcomponents" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Time interval from onset to death-a</label>
+                                                <obs id="165265" conceptId="165265" class="otherpdhpcomponents" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>b</label>
+                                                <obs id="165265" conceptId="165265" class="otherpdhpcomponents" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>c</label>
+                                                <obs id="165265" conceptId="165265" class="otherpdhpcomponents" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>d</label>
+                                                <obs id="165265" conceptId="165265" class="otherpdhpcomponents" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Other significant conditions contributing to death (time intervals can be included in brackets after the condition</label>
+                                                <obs conceptId="99256" class="commenttextarea" style="textarea"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        Prevention Services and Referral
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <obs conceptId="165177" answerConceptId="99511" answerLabel="1 - Prevention Information" style="checkbox" class="horizontal-layout-options" />
-                                                <obs conceptId="165177" answerConceptId="90083" answerLabel="2 - Condoms" style="checkbox" class="horizontal-layout-options" />
-                                            </div>
-                                            <div class="col-md-3">
-                                                <obs conceptId="165177" answerConceptId="99550" answerLabel="3 - STI Screening" style="checkbox" class="horizontal-layout-options" />
-                                                <obs conceptId="165177" answerConceptId="99553" answerLabel="4 - STI treatment" style="checkbox" class="horizontal-layout-options" />
-                                            </div>
-                                            <div class="col-md-3">
-                                                <obs conceptId="165177" answerConceptId="165176" answerLabel="5 - Post-GBV" style="checkbox" class="horizontal-layout-options" />
-                                                <obs conceptId="165177" answerConceptId="99056" answerLabel="6 - PEP" style="checkbox" class="horizontal-layout-options" />
-                                            </div>
-                                            <div class="col-md-3">
-                                                <obs conceptId="165177" answerConceptId="165163" answerLabel="7 - PREP" style="checkbox" class="horizontal-layout-options" />
-                                                <obs conceptId="165177" id="other-prevention-services" answerConceptId="90002" answerLabel="8 - Others" style="checkbox" class="horizontal-layout-options" />
-                                                <span><label>Other prevention services</label>
-                                                    <obs id="165175" conceptId="165175" class="horizontal-layout-options"/>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Client has been referred for HIV care or other prevention services </label>
-                                                <obs id="162982" conceptId="162982" answerConceptIds="1065,1066" answerLabels="1 - Yes,2 - No"  style="radio" class="horizontal"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Place of referral</label>
-                                                <obs id="90211" conceptId="90211" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label><span class="required">*</span>Counselor</label>
-                                        <encounterProvider required="true"/>
-                                    </div>
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
