@@ -8,16 +8,11 @@
           formOrder="12"
           formIcon="icon-medkit"
 
-          formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==true"
+          formShowIf="(visit.active || !visit.active) &amp;&amp; patient.person.dead==false"
           formDisplayStyle="Standard"
           formLabel="HIV Death Review Form">
     <script type="text/javascript">
         <!--          TODO: Investigate why the form only appears for alive clients and not dead-->
-        var facility_entry_point ;
-        var facility_entry_point_enabled =false;
-        var community_entry_testing_point ;
-        var community_entry_testing_point_enabled = false;
-
         if (jQuery) {
         jq(document).ready(function () {
 
@@ -25,61 +20,193 @@
         blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");
 
         <ifMode mode="EDIT">
-            jq(document).ready(function () {
-            $allRows = jq(this).find('.general-exam');
-            $allRows.hide();
-            jq('#1-removeEntry').remove();
-            jq('#10-addEntry').remove();
-            jq('#1-toggleContainer').show();
-            jq('#11-removeEntry').remove();
-            jq('#20-addEntry').remove();
-            jq('#11-toggleContainer').show();
-            for (let x = 0; x&lt;= 10; x++) {
-            if (jq(this).find('#' +x+ '-Apgar').find("input[type$='text']").val()!='') {
-            jq(this).find('#' +x+ '-toggleContainer').show();
-            jq(this).find('#' +x+ '-addEntry').hide();
-            } else {
-            x-=1;
-            jq(this).find('#' +x+ '-addEntry').show();
-            break;
+            if( jq("#returndate").find("input").val()==''){
+            disable_fields(99161);
             }
+            if( jq("#99025").find("input").val()==''){
+            disable_fields(99025);
             }
-            });
-
+            if( jq("#90315").find("input").val()==''){
+            disable_fields(90315);
+            }
+            if( jq("#99025").find("input").val()==''){
+            disable_fields(99025);
+            }
+            if( jq("#99024").find("input").val()==''){
+            disable_fields(99024);
+            }
         </ifMode>
 
-        //addRemovePrescription();
+        disable_fields(99161);
+        disable_fields(90315);
+        disable_fields(99025);
+        disable_fields(99024);
+        disable_fields(162872);
 
-        $allRows = jq(this).find('.general-exam');
-        $allRows.hide();
-        jq('#1-removeEntry').remove();
-        jq('#10-addEntry').remove();
-        jq('#1-toggleContainer').show();
-
-        jq('#11-removeEntry').remove();
-        jq('#20-addEntry').remove();
-        jq('#11-toggleContainer').show();
-
-        jq('.addEntry').on("click", function() {
-        var correctedAddButtonId = parseFloat(this.id) + 1;
-        var contentAddId = "#" + correctedAddButtonId + "-toggleContainer";
-        jq(contentAddId).toggle(true);
-        jq('#' + this.id).toggle(false); jq('#' + parseFloat(this.id) + '-removeEntry').toggle(true);
-        return false;
+        <!-- Enable HIV Care and Treatment-->
+        jq('#99415').change(function () {
+        if(getValue('99415' + '.value')== 90003) {
+        enable_fields(99161);
+        enable_fields(90012);
+        enable_fields(90315);
+        enable_fields(99025);
+        enable_fields(99024);
+        enable_fields(162872);
+        }
+        else {
+        disable_fields(99161);
+        disable_fields(90012);
+        disable_fields(90315);
+        disable_fields(99025);
+        disable_fields(99024);
+        }
         });
 
-        jq('.removeEntry').on("click", function() {
-        var correctedRemoveButtonId = parseFloat(this.id) - 1;
-        var contentAddId = "#" + parseFloat(this.id) + "-toggleContainer";
-        jq(contentAddId).toggle(false);
-        jq( ':input:not(:button)', contentAddId).val([]);
-        jq('#' + correctedRemoveButtonId + '-addEntry').toggle(true); jq('#' + correctedRemoveButtonId + '-removeEntry').toggle(true);
 
-        return false;
+        jq('#162872').change(function () {
+        if(getValue('162872' + '.value')== 90004) {
+        enable_fields(99024);
+        }
+        else {
+        disable_fields(99024);
+        }
         });
+
+        <includeIf velocityTest="$fn.globalProperty('ugandaemr.hts.recency') == true">
+            <excludeIf velocityTest="$patient.age &lt; 15">
+
+                jq('#99493').change(function () {
+                if(getValue('99493' + '.value')== 90166)
+                enable_fields(99481);
+                else
+                disable_fields(99481);
+                });
+
+            </excludeIf>
+        </includeIf>
+
+        jq('#99498').change(function () {
+        if(getValue('99498' + '.value')== 1065)
+        enable_fields(165178);
+        else
+        disable_fields(165178);
         });
+
+        jq('#form-id').change(function () {
+        if(getValue('99493' + '.value')== 90166 ){
+        enable_fields('99493');
+        enable_fields('165182');
+        if( getValue('99481' + '.value')== 1065){
+        enable_fields(141520);
+        }
+        else if( getValue('99481' + '.value')== 1066){
+        disable_fields(141520);
+        }else{
+        disable_fields(141520);
+        }
+        }else{
+        disable_fields(141520);
+        disable_fields('165182');
+        }
+        });
+
+        jq('#other-prevention-services').change(function(){
+        if(!jq('#other-prevention-services').find(':checkbox').prop('checked')){
+        jq("#165175").find("input[type$='text']").attr("disabled",true);
+        jq("#165175").find("input[type$='text']").val("");
+        }
+        else
+        enable_fields(165175);
+        });
+
+        jq('#other-special-category').change(function(){
+        if(!jq('#other-special-category').find(':checkbox').prop('checked')){
+        jq("#other-special-category").find("input[type$='text']").attr("disabled",true);
+        jq("#other-special-category").find("input[type$='text']").val("");
+        }else{
+        jq("#other-special-category").find("input[type$='text']").attr("disabled",false); }
+        });
+
+        /* add JQuery validator classes and rules*/
+        jq("#nationalid input:text").addClass("nationalid");
+
+        /* add the validator on the beforeSubmit*/
+        beforeSubmit.push(function () {
+        jq("#htmlform").validate();
+        return jq("#htmlform").valid();
+        }
+        );
+
+        });
+
+        function disable_fields(groupId){
+        var disable = true;
+        var group = jq("#"+groupId);
+        group.find("input").attr("disabled", disable);
+        group.find('select').attr("disabled", disable);
+
+        if (disable) {
+        /* fade out the fields that are disabled */
+        group.find("input").fadeTo(250, 0.25);
+        group.find("select").fadeTo(250, 0.25);
+        } else {
+        /* remove the fade on the fields */
+        group.find("input").fadeTo(250, 1);
+        group.find("select").fadeTo(250, 1);
+        }
         }
 
+        function enable_fields(group){
+        var disable = false;
+        var group = jq("#"+group);
+        group.find("input").attr("disabled", disable);
+        group.find('select').attr("disabled", disable);
+
+        if (!disable) {
+        /* remove the fade on the fields */
+        group.find("input").fadeTo(250, 1);
+        group.find("select").fadeTo(250, 1);
+        }
+        }
+
+        function enable_disable(triggerId, enabledDisabledId, conditionValue) {
+        if (getValue(triggerId + '.value') == conditionValue){
+
+        enableContainer('#' + enabledDisabledId);
+        }
+        else {
+        if(getValue(enabledDisabledId+'.value')!=''){
+        setValue(enabledDisabledId+'.value', '');
+        }
+        disableContainer('#' + enabledDisabledId);
+        }
+
+        }
+
+        beforeSubmit.push(function () {
+        setValue('165160.error', '');
+        setValue('99115.error', '');
+        setValue('165159.error', '');
+        setValue('165167.error', '');
+
+        var submitVal = true;
+        var submitValStage = [];
+        if(! jq("#162925").find("select").is(':disabled') &amp;&amp; jq("#162925").find("select").find(":selected").val()== 90002 &amp;&amp; jq("#99115").find("input[type$='text']").val()=='') {
+        getField('99115.error').html('Required text field is empty').show();
+        return false;
+        }
+        if(! jq("#165160").find("select").is(':disabled') &amp;&amp; jq("#165160").find("select").find(":selected").val()== 90002 &amp;&amp; jq("#165159").find("input[type$='text']").val()=='') {
+        getField('165159.error').html('Required text field is empty').show();
+        return false;
+        }
+        if(! jq("#165168").find("select").is(':disabled') &amp;&amp; jq("#165168").find("select").find(":selected").val()== 90002 &amp;&amp; jq("#165167").find("input[type$='text']").val()=='') {
+        getField('165167.error').html('Required text field is empty').show();
+        return false;
+        }
+
+        return true;
+        });
+        }
 
     </script>
 
@@ -225,15 +352,15 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label>Had the deceased EVER received ART?</label>
-                                                <obs id="ever-received-ART" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                <obs id="99415" conceptId="99415" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>If YES, when the earliest ART started</label>
-                                                <obs class="return-date-poc" id="returndate" conceptId="5096" allowFutureDates="true"/>
+                                                <obs class="return-date-poc" id="99161" conceptId="99161" allowFutureDates="true"/>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Was the patient still on ART at the time of death?</label>
-                                                <obs id="still-on-ART" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                <obs id="162872" conceptId="162872" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -242,10 +369,10 @@
                                                 <obs id="90315" conceptId="90315" />
                                             </div>
                                             <div class="col-md-4">
-                                                <obs id="164975" conceptId="164975" labelText="Duration on current Regimen(months)"/>
+                                                <obs id="99025" conceptId="99025" labelText="Duration on current Regimen(months)"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <obs id="duration-off-ART" conceptId="164975" labelText="If No, Duration off ART(months)"/>
+                                                <obs id="99024" conceptId="99024" labelText="If No, Duration off ART(months)"/>
                                             </div>
                                         </div>
                                     </div>
