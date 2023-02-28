@@ -20,7 +20,7 @@
         blockEncounterOnSameDateEncounter(jq("#encounterDate").find("input[type=hidden]"),"block");
 
         <ifMode mode="EDIT">
-            if( jq("#returndate").find("input").val()==''){
+            if( jq("#99161").find("input").val()==''){
             disable_fields(99161);
             }
             if( jq("#99025").find("input").val()==''){
@@ -35,6 +35,15 @@
             if( jq("#99024").find("input").val()==''){
             disable_fields(99024);
             }
+            if(jq("#99648").find("input[type$='text']").val()==''){
+            jq("#999648").find("input[type$='text']").attr("disabled",true);
+            }
+            if( jq("#166073").find("input").val()==''){
+            disable_fields(166073);
+            }
+            if(jq("#5089").find("input[type$='radio']").val()==''){
+            jq("#5089").find("input[type$='text']").attr("disabled",true);
+            }
         </ifMode>
 
         disable_fields(99161);
@@ -42,6 +51,10 @@
         disable_fields(99025);
         disable_fields(99024);
         disable_fields(162872);
+        disable_fields(99032);
+        disable_fields(99648);
+        disable_fields(166073);
+        disable_fields(5089);
 
         <!-- Enable HIV Care and Treatment-->
         jq('#99415').change(function () {
@@ -62,6 +75,35 @@
         }
         });
 
+        <!-- Conditions presented before death handling-->
+        jq('#99644').change(function () {
+        if(getValue('99644' + '.value')== 90003)
+        enable_fields(99648);
+        else
+        disable_fields(99648);
+        });
+
+        jq('#119481').change(function () {
+        if(getValue('119481' + '.value')== 90003)
+        enable_fields(99648_2);
+        else
+        disable_fields(99648_2);
+        });
+
+        jq('#90251').change(function () {
+        if(getValue('90251' + '.value')== 90003)
+        enable_fields(99648);
+        else
+        disable_fields(99648);
+        });
+
+        <!-- other specify handling -->
+        jq('#90251').change(function () {
+        if(getValue('90251' + '.value')== 90002)
+            enable_fields(99032);
+        else
+            disable_fields(99032);
+        });
 
         jq('#162872').change(function () {
         if(getValue('162872' + '.value')== 90004) {
@@ -71,6 +113,19 @@
         disable_fields(99024);
         }
         });
+
+        <!-- admission handling -->
+        jq('#99175').change(function () {
+        if(getValue('99175' + '.value')== 90003) {
+        enable_fields(166073);
+        enable_fields(5089);
+        }
+        else {
+        disable_fields(166073);
+        disable_fields(5089);
+        }
+        });
+
 
         <includeIf velocityTest="$fn.globalProperty('ugandaemr.hts.recency') == true">
             <excludeIf velocityTest="$patient.age &lt; 15">
@@ -459,24 +514,29 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <obs conceptId="90251" id="90251" answerConceptId="5339" answerLabel="Weight loss (over 10%)" style="checkbox"/>
+                                                <obs conceptId="90251" answerConceptId="5339" answerLabel="Weight loss (over 10%)" style="checkbox"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <obs conceptId="90251" id="90251" answerConceptId="90002" answerLabel="Aspergillosis, invasive" style="checkbox"/>
+                                                <obs conceptId="90251" answerConceptId="90002" answerLabel="Aspergillosis, invasive" style="checkbox"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <obs conceptId="90251" id="90251" answerConceptId="90002" answerLabel="Bartonellosis" style="checkbox"/>
+                                                <obs conceptId="90251" answerConceptId="90002" answerLabel="Bartonellosis" style="checkbox"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <obs conceptId="90251" id="90251" answerConceptId="117543" answerLabel="Herpes zoster, multi-dermatomal" style="checkbox"/>
+                                                <obs conceptId="90251" answerConceptId="117543" answerLabel="Herpes zoster, multi-dermatomal" style="checkbox"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <obs conceptId="90251" id="90251" answerConceptId="117543" answerLabel="Lumphoma, non-Hodgkin's, all cell types" style="checkbox"/>
+                                                <obs conceptId="90251" answerConceptId="117543" answerLabel="Lumphoma, non-Hodgkin's, all cell types" style="checkbox"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <obs conceptId="90251" id="90251" answerConceptId="507" answerLabel="Kaposi's Sarcoma" style="checkbox"/>
+                                                <obs conceptId="90251" answerConceptId="507" answerLabel="Kaposi's Sarcoma" style="checkbox"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <obs id="90251" conceptId="90251" answerConceptId="90002" answerLabel="Others" style="checkbox"/>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -485,8 +545,7 @@
                                                 <obs conceptId="99463" />
                                             </div>
                                             <div class="col-md-6">
-                                                <label>Other Opportunistic Infections specify</label>
-                                                <obs conceptId="99463" class="horizontal"/>
+                                                <label>Other Opportunistic Infections specify</label><obs id="99032" conceptId="99032" class="horizontal"/>
                                             </div>
                                         </div>
                                     </div>
@@ -496,12 +555,12 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Hypertension</label>
-                                                <obs id="99644" conceptId="99644" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                <label>Hypertension</label><obs id="99644" conceptId="99644" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
                                             </div>
+<!--                                            TODO: FIND A WAY TO MAKE THIS FIELD UNIQUE FOR ALL CONDITIONS-->
                                             <div class="col-md-3">
                                                 <label>If YES, indicate treatment</label>
-                                                <obs conceptId="99463"/>
+                                                <obs id="99648" conceptId="99648"/>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Diabetes Mellitus</label>
@@ -509,7 +568,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>If YES, indicate treatment</label>
-                                                <obs conceptId="99463"/>
+                                                <obs id="99648" conceptId="99648"/>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -519,7 +578,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>If YES, indicate treatment</label>
-                                                <obs conceptId="99463"/>
+                                                <obs id="99648" conceptId="99648"/>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Renal disease</label>
@@ -527,7 +586,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>If YES, indicate treatment</label>
-                                                <obs conceptId="99463"/>
+                                                <obs id="99648" conceptId="99648"/>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -537,7 +596,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>If YES, indicate treatment</label>
-                                                <obs conceptId="99463"/>
+                                                <obs id="99648" conceptId="99648"/>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Cancers</label>
@@ -545,7 +604,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>If YES, indicate treatment</label>
-                                                <obs conceptId="99463"/>
+                                                <obs id="99648" conceptId="99648"/>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Liver disease</label>
@@ -553,11 +612,12 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>If YES, indicate treatment</label>
-                                                <obs conceptId="99463"/>
+                                                <obs id="99648" conceptId="99648"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <includeIf velocityTest="$patient.gender == 'F'">
                                 <div class="card">
                                     <div class="card-header">Pregnancy</div>
                                     <div class="card-body">
@@ -583,12 +643,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                </includeIf>
                                 <div class="card">
                                     <div class="card-header">Adverse Effects Attributed to Death</div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <obs conceptId="99175" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" labelText="Was the death considered to be related to a medical treatment?" style="radio" class="horizontal"/>
+                                                <obs conceptId="99563" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" labelText="Was the death considered to be related to a medical treatment?" style="radio" class="horizontal"/>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -615,19 +676,19 @@
                                             <div class="col-md-4">
                                                <label> Admitted to a Facility before Death</label>
 <!--                                                TODO: Create new Concepts for Admission to the facility with Yes and No as Answers-->
-                                                <obs conceptId="99175" answerConceptIds="90003,90004" answerLabels="Yes,No" style="radio" class="horizontal"/>
+                                                <obs id="99175" conceptId="99175" answerConceptIds="90003,90004" answerLabels="Yes,No" style="radio" class="horizontal"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <obs id="date-of-admission" labelText="Date of Admission" conceptId="166073"/>
+                                                <obs id="166073" labelText="Date of Admission" conceptId="166073"/>
                                             </div>
                                             <div class="col-md-4">
-                                                <obs id="date-of-death" labelText="Date of Death" conceptId="90272"/>
+                                                <obs id="90272" labelText="Date of Death" conceptId="90272"/>
                                             </div>
 
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <obs id="wieght-on-admission" labelText="Weight on Admission" conceptId="5089"/>
+                                                <obs id="5089" labelText="Weight on Admission" conceptId="5089"/>
 
                                             </div>
                                         </div>
@@ -732,8 +793,9 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Was the deceased on ART?</label>
-                                                <obs id="119481" conceptId="119481" answerConceptIds="90003,90004" answerLabels="Yes,No" class="horizontal" style="radio"/>
+                                                <obs id="99415" conceptId="99415" answerConceptIds="90003,90004" answerLabels="Yes,No" class="horizontal" style="radio"/>
                                             </div>
+<!--                                            TODO:  CALCULATE DATE OF LAST REFILL-->
                                             <div class="col-md-4">
                                                 <label>Date of Last Refill</label>
                                                 <obs class="return-date-poc" id="returndate" conceptId="5096" allowFutureDates="false"/>
