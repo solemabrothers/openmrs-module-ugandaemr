@@ -216,10 +216,10 @@ body {
 </script>
 
 <script>
-    function getSearchConfigs() {
+    function getSearchConfigs(uuid) {
         var searchConfigs;
         jQuery.ajax({
-            url: '/' + OPENMRS_CONTEXT_PATH + "/ws/rest/v1/syncfhirprofile/84242661-aadf-42e4-9431-bf8afefb4433?v=full",
+            url: '/' + OPENMRS_CONTEXT_PATH + "/ws/rest/v1/syncfhirprofile/"+uuid+"?v=full",
             dataType: 'json',
             headers: {
                 'Content-Type': 'application/json',
@@ -233,9 +233,9 @@ body {
         return searchConfigs;
     }
 
-    function generateSearchParams() {
+    function generateSearchParams(id) {
         var data = {};
-        jq('#search-client-registry').find("input").each(function () {
+        jq("#"+id).find("input").each(function () {
             var inputtag = jq(this);
             var id = inputtag.attr("id");
             var value = inputtag.val();
@@ -256,11 +256,10 @@ body {
                 default:
                     break;
             }
-            if (value !== "" && value !== null && id !== "advanced-search") {
+            if (value !== "" && value !== null && id !== "advanced-search" && id !== "advanced-search-fshr") {
                 data[id] = value;
             }
         });
-
         return new URLSearchParams(data).toString();
     }
 
@@ -427,8 +426,8 @@ body {
             var middleName = jq("#middle-name").val();
             var givenName = jq("#given-name").val();
             var patientId = jq("#patientId").val();
-            var searchConfigs = getSearchConfigs();
-            var searchParams = generateSearchParams();
+            var searchConfigs = getSearchConfigs("84242661-aadf-42e4-9431-bf8afefb4433");
+            var searchParams = generateSearchParams("search-client-registry");
             var birthDate = null;
 
             if (jq("#birthdate").val() !== null && jq("#birthdate").val() !== "") {
@@ -450,6 +449,41 @@ body {
             patientSearchWidget.searchByIdentifiers(uic);
             }
             
+            if (patientSearchWidget.getCountAfterSearch() === 0 && patientId !== "") {
+                searchOnLineFhirServer(patientId, searchConfigs, searchParams);
+            } else if (patientSearchWidget.getCountAfterSearch() === 0 && patientId === "" && uic !== "") {
+                searchOnLineFhirServer(uic, searchConfigs, searchParams);
+            }
+        });
+
+        jq("#advanced-search-fshr").click(function () {
+            var surName = jq("#sur-name").val();
+            var middleName = jq("#middle-name").val();
+            var givenName = jq("#given-name").val();
+            var patientId = jq("#patientId").val();
+            var searchConfigs = getSearchConfigs("0b7eb397-4488-4a88-9967-a054b3c26d6f");
+            var searchParams = generateSearchParams("search-fhsr");
+            var birthDate = null;
+
+            if (jq("#birthdate").val() !== null && jq("#birthdate").val() !== "") {
+                birthDate = new Date(jq("#dob").val());
+            }
+
+            var country = jq("#address-country").val();
+            var gender = jq("#search-gender").val();
+
+            var uic = "";
+
+            if (patientId === "") {
+                uic = generateUIC(givenName, middleName, surName, null, null, birthDate, country, gender);
+            }
+
+            if (patientId !== "" && uic === "") {
+                patientSearchWidget.searchByIdentifiers(jq("#patientId").val());
+            }else{
+                patientSearchWidget.searchByIdentifiers(uic);
+            }
+
             if (patientSearchWidget.getCountAfterSearch() === 0 && patientId !== "") {
                 searchOnLineFhirServer(patientId, searchConfigs, searchParams);
             } else if (patientSearchWidget.getCountAfterSearch() === 0 && patientId === "" && uic !== "") {
@@ -661,23 +695,92 @@ body {
             </div>
         </div>
 
-        <p>
-            <a data-toggle="collapse" style="width: 10px" href="#collapseExample" role="button" aria-expanded="false"
-               aria-controls="collapseExample">
-                Search National Health Client Registry
-            </a>
-        </p>
+        <div class="row">
+            <div class="col-7">
+                <a data-toggle="collapse" style="width: 10px" href="#collapseExample" role="button" aria-expanded="false"
+                   aria-controls="collapseExample">
+                    Search NHCR (National Health Client Registry)
+                </a>
+            </div>
 
+            <div class="col-5" style="text-align: right">
+                <a data-toggle="collapse" style="width: 10px;" href="#collapseFHSR" role="button" aria-expanded="false"
+                   aria-controls="collapseExample">
+                    Search FSHR (Facility Intergration Service)
+                </a>
+            </div>
+        </div>
         <div class="collapse" id="collapseExample">
             <div class="card card-body" id="search-client-registry">
                 <div class="row">
-
                     <div class="col-8">
                         <input type="text" id="patientId" placeholder="Patient Unique Identifier" value="" autocomplete="off"/>
                     </div>
 
                     <div class="col-4">
                         <input type="submit" value="Search" class="submit" id="advanced-search" autocomplete="off"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapse" id="collapseFHSR">
+            <div class="card card-body" id="search-fhsr">
+                <div class="row">
+                    <div class="col-3">
+                        <input type="text" id="sur-name" placeholder="First Name/Surname" autocomplete="off"/>
+                    </div>
+
+                    <div class="col-3">
+                        <input type="text" id="given-name" placeholder="Given Name" autocomplete="off"/>
+                    </div>
+
+                    <div class="col-3">
+                        <input type="text" id="middle-name" placeholder="Middle Name" autocomplete="off"/>
+                    </div>
+
+                    <div class="col-3">
+                        <input type="text" id="patientId" placeholder="Patient Id" value="" autocomplete="off"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        <select id="search-gender">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="col-3">
+                        <input type="date" id="birthdate" placeholder="Date Of Birth" autocomplete="off"/>
+                    </div>
+
+                    <div class="col-3">
+                        <input type="text" id="age-years" placeholder="Age~Years" autocomplete="off"/>
+                    </div>
+
+                    <div class="col-3">
+                        <input type="text" id="telecom" placeholder="Phone Number" autocomplete="off"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        <input type="text" id="address-country" placeholder="Country" autocomplete="off"/>
+                    </div>
+
+                    <div class="col-3">
+                        <input type="text" id="address-sub-county" placeholder="Sub Country" autocomplete="off"/>
+                    </div>
+
+                    <div class="col-3">
+                        <input type="text" id="address-village" placeholder="Village" autocomplete="off"/>
+                    </div>
+
+                    <div class="col-3">
+                        <input type="submit" value="Search" class="submit" id="advanced-search-fshr" autocomplete="off"/>
                     </div>
                 </div>
 
