@@ -233,6 +233,23 @@ body {
         return searchConfigs;
     }
 
+    function checkProfileEnabled(uuid) {
+        var profileEnabled;
+        jQuery.ajax({
+            url: '/' + OPENMRS_CONTEXT_PATH + "/ws/rest/v1/syncfhirprofile/"+uuid+"?v=full",
+            dataType: 'json',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            type: 'GET',
+            async: false
+        }).success(function (data) {
+            var profile = data;
+            profileEnabled = profile.profileEnabled;
+        })
+        return profileEnabled;
+    }
+
     function generateSearchParams(id) {
         var data = {};
         jq("#"+id).find("input").each(function () {
@@ -421,6 +438,16 @@ body {
 
 <script>
     jq(document).ready(function () {
+        jq('#fshr').hide();
+        jq('#nhcr').hide();
+        if(checkProfileEnabled("84242661-aadf-42e4-9431-bf8afefb4433")){
+            // show the client registry search link
+            jq('#nhcr').show();
+        }
+        if(checkProfileEnabled("0b7eb397-4488-4a88-9967-a054b3c26d6f")){
+            // show the facility shr search link
+            jq('#fshr').show();
+        }
         jq("#advanced-search").click(function () {
             var surName = jq("#sur-name").val();
             var middleName = jq("#middle-name").val();
@@ -696,14 +723,14 @@ body {
         </div>
 
         <div class="row">
-            <div class="col-7">
+            <div id="nhcr" class="col-7">
                 <a data-toggle="collapse" style="width: 10px" href="#collapseExample" role="button" aria-expanded="false"
                    aria-controls="collapseExample">
                     Search NHCR (National Health Client Registry)
                 </a>
             </div>
 
-            <div class="col-5" style="text-align: right">
+            <di id="fshr" class="col-5" style="text-align: right">
                 <a data-toggle="collapse" style="width: 10px;" href="#collapseFHSR" role="button" aria-expanded="false"
                    aria-controls="collapseExample">
                     Search FSHR (Facility Intergration Service)
