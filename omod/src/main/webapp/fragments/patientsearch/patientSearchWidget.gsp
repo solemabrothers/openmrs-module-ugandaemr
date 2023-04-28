@@ -279,11 +279,17 @@ body {
     }
 
     function searchOnLineFhirServer(identifier, searchConfigs, searchParams) {
-        var query =""
+        var query ="?"
+        var searchObject="Patient";
+
+        if(searchConfigs.url.indexOf(searchObject) <= -1){
+            query= "/"+searchObject+query
+        }
+
         if(identifier!==null && identifier!==""){
-            query= "?identifier=" + identifier;
+          query= query+"identifier=" + identifier;
         }else{
-            query= "?" + searchParams;
+            query= query + searchParams;
             query = query.replace("%s", searchParams);
         }
 
@@ -297,7 +303,7 @@ body {
                 'Authorization': "Basic " + btoa(searchConfigs.urlUserName + ":" + searchConfigs.urlPassword),
             }
         }).success(function (data) {
-            if (data.entry.length > 0) {
+            if (data.hasOwnProperty('resourceType') && data.resourceType==="Bundle" && data.total > 0) {
                 patientTransferInData = data;
                 displayFhirData(data);
             } else {
@@ -306,7 +312,7 @@ body {
             }
         }).error(function (data, status, err) {
             jq("#loading-model").modal("hide");
-            jq().toastmessage('showErrorToast', err);
+            jq().toastmessage('showErrorToast', data);
         });
     }
 
