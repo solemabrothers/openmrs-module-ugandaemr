@@ -213,9 +213,7 @@ body {
             });
         });
     });
-</script>
 
-<script>
     function getSearchConfigs(uuid) {
         var searchConfigs;
         jQuery.ajax({
@@ -281,8 +279,14 @@ body {
     }
 
     function searchOnLineFhirServer(identifier, searchConfigs, searchParams) {
-        var query = "?" + searchParams;
-        query = query.replace("%s", searchParams);
+        var query =""
+        if(identifier!==null && identifier!==""){
+            query= "?identifier=" + identifier;
+        }else{
+            query= "?" + searchParams;
+            query = query.replace("%s", searchParams);
+        }
+
         var url = searchConfigs.url + query
         jQuery.ajax({
             url: url,
@@ -434,9 +438,7 @@ body {
 
         return day + ' ' + monthNames[monthIndex] + ' ' + year;
     }
-</script>
 
-<script>
     jq(document).ready(function () {
         jq('#fshr').hide();
         jq('#nhcr').hide();
@@ -458,7 +460,7 @@ body {
             var birthDate = null;
 
             if (jq("#birthdate").val() !== null && jq("#birthdate").val() !== "") {
-                birthDate = new Date(jq("#dob").val());
+                birthDate = new Date(jq("#birthdate").val());
             }
 
             var country = jq("#address-country").val();
@@ -473,6 +475,7 @@ body {
             if (patientId !== "" && uic === "") {
                 patientSearchWidget.searchByIdentifiers(jq("#patientId").val());
             }else{
+            patientId=uic
             patientSearchWidget.searchByIdentifiers(uic);
             }
             
@@ -493,7 +496,7 @@ body {
             var birthDate = null;
 
             if (jq("#birthdate").val() !== null && jq("#birthdate").val() !== "") {
-                birthDate = new Date(jq("#dob").val());
+                birthDate = new Date(jq("#birthdate").val());
             }
 
             var country = jq("#address-country").val();
@@ -509,6 +512,7 @@ body {
                 patientSearchWidget.searchByIdentifiers(jq("#patientId").val());
             }else{
                 patientSearchWidget.searchByIdentifiers(uic);
+                patientId=uic;
             }
 
             if (patientSearchWidget.getCountAfterSearch() === 0 && patientId !== "") {
@@ -550,7 +554,7 @@ body {
         }
 
         if (country !== null && country !== "") {
-            countryCode = country.substring(0, 1);
+            countryCode = country.substring(0, 2);
         } else {
             countryCode = "X";
         }
