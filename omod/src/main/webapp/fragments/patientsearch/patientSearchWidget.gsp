@@ -293,27 +293,39 @@ body {
             query = query.replace("%s", searchParams);
         }
 
-        var url = searchConfigs.url + query
-        jQuery.ajax({
-            url: url,
-            type: 'GET',
-            async: false,
-            headers: {
-                'Accept': '*/*',
-                'Authorization': "Basic " + btoa(searchConfigs.urlUserName + ":" + searchConfigs.urlPassword),
-            }
-        }).success(function (data) {
-            if (data.hasOwnProperty('resourceType') && data.resourceType==="Bundle" && data.total > 0) {
-                patientTransferInData = data;
-                displayFhirData(data);
-            } else {
-                jq("#loading-model").modal('hide');
-                jq().toastmessage('showNoticeToast', "No Record found");
-            }
+        var url=searchConfigs.url+query;
+        var settings = null;
+
+        if(searchConfigs.urlUserName!==null && searchConfigs.urlUserName!==""){
+           settings = {
+              "url": url,
+               "method": "GET",
+               "timeout": 0,
+               "async":false,
+                "headers": {
+                     'Authorization': "Basic " + btoa(searchConfigs.urlUserName + ":" + searchConfigs.urlPassword),
+                   },
+                 };
+        }else{
+        settings = {
+              "url": url,
+               "method": "GET",
+               "timeout": 0,
+               "async":false,
+           };
+        }
+        jQuery.ajax(settings).done(function (data) {
+                      if (data.hasOwnProperty('resourceType') && data.resourceType==="Bundle" && data.total > 0) {
+                          patientTransferInData = data;
+                          displayFhirData(data);
+                      } else {
+                          jq("#loading-model").modal('hide');
+                          jq().toastmessage('showNoticeToast', "No Record found");
+                      }
         }).error(function (data, status, err) {
-            jq("#loading-model").modal("hide");
-            jq().toastmessage('showErrorToast', data);
-        });
+                      jq("#loading-model").modal("hide");
+                      jq().toastmessage('showErrorToast', data);
+                  });
     }
 
     jQuery(document).ready(function (jq) {
@@ -560,7 +572,7 @@ body {
         }
 
         if (country !== null && country !== "") {
-            countryCode = country.substring(0, 2);
+            countryCode = country.substring(0, 2).toUpperCase();
         } else {
             countryCode = "X";
         }
