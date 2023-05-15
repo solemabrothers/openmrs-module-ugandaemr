@@ -496,7 +496,7 @@ body {
             patientId=uic
             patientSearchWidget.searchByIdentifiers(uic);
             }
-            
+
             if (patientSearchWidget.getCountAfterSearch() === 0 && patientId !== "") {
                 searchOnLineFhirServer(patientId, searchConfigs, searchParams);
             } else if (patientSearchWidget.getCountAfterSearch() === 0 && patientId === "" && uic !== "") {
