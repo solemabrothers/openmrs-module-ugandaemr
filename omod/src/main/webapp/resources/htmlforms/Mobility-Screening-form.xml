@@ -97,6 +97,14 @@
                     <div class="card">
                         <div class="card-header">Personal Information</div>
                         <div class="card-body">
+                            <div class="row">
+                            <div class="col-md-3">
+                                <label>Target Population:</label> <obs id="165169" conceptId="165169" />
+                            </div>
+                                <div class="col-md-3">
+                                    <label>Travelled to another country in the last 3 months?:</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     </div>
@@ -104,8 +112,6 @@
             </div>
 
             </div>
-
-
 
     <section headerLabel="Screening Details">
 
