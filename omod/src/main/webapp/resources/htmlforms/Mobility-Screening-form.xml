@@ -12,31 +12,6 @@
           formLabel="Mobility Screening form">
 
     <script type="text/javascript">
-        jq(function($) {
-
-        var travelled3m = getField("travelled-3m.value");
-        var travelled6m = getField("travelled-6m.value");
-        var travelled12m = getField("travelled-12m.value");
-
-        var showHideTravelInfo = function () {
-
-        if (getValue("travelled-3m.value") == 1065) {
-        travelled6m.hide();
-        travelled12m.hide();
-        } else {
-        travelled6m.show();
-        travelled12m.show();
-        }
-
-        if (getValue("travelled-6m.value") == 1065) {
-        travelled12m.hide();
-        }
-        };
-
-        travelled3m.change(showHideTravelInfo);
-        travelled6m.change(showHideTravelInfo);
-        travelled12m.change(showHideTravelInfo);
-
 
         var facilityName = '<lookup expression="fn.globalProperty('aijar.healthCenterName')" />';
         var facilityCode = '<lookup expression="fn.globalProperty('ugandaemr.dhis2.organizationuuid')" />';
