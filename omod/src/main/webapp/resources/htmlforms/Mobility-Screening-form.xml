@@ -1,7 +1,7 @@
 <htmlform formName="Mobility Screening form"
-          formEncounterType="e22e39fd-7db2-45e7-80f1-60fa0d5a4378"
+          formEncounterType="b57e1835-4ee2-47fa-9569-c700c39c169a"
           formDescription="Mobility Screening form"
-          formUuid="67a71486-1a54-468f-ac3e-BB91a9a79545"
+          formUuid="67a71486-2a54-468f-ac3e-BB91a9a79545"
           formVersion="1.0"
           formAddMetadata="yes"
           formUILocation="patientDashboard.visitActions"
@@ -98,71 +98,34 @@
                         <div class="card-header">Personal Information</div>
                         <div class="card-body">
                             <div class="row">
-                            <div class="col-md-3">
-                                <label>Target Population:</label> <obs id="165169" conceptId="165169" />
-                            </div>
-                                <div class="col-md-3">
-                                    <label>Travelled to another country in the last 3 months?:</label>
+
+                                <div class="col-md-4">
+                                    <label>Travelled to another country in the last 3 months?:</label><obs id="168763" conceptId="168763" style="radio" class="horizontal"/>
                                 </div>
+                                <div class="col-md-4">
+                                    <label>Travelled to another country in the last 6 months?:</label> <obs id="168764" conceptId="168764" style="radio" class="horizontal"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Travelled to another country in the last 12 months?:</label><obs id="168765" conceptId="168765" style="radio" class="horizontal"/>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Target Population:</label> <obs id="165169" conceptId="165169" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Days Spent in another Country:</label><obs id="168766" conceptId="168766" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Frequency of Travel:</label> <obs id="168769" conceptId="168769" />
+                                </div>
+
                             </div>
                         </div>
                     </div>
                     </div>
                 </div>
             </div>
-
             </div>
-
-    <section headerLabel="Screening Details">
-
-        <table>
-            <tr>
-                <td>
-
-                </td>
-                <td>
-                    Cross border target Population
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>
-                        Have you travelled to another country in the last 3 months?
-                    </p>
-                </td>
-                <td>
-                    <p>
-                        Have you travelled to another country in the last 6 months?
-
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>
-                        Have you travelled to another country in the last 12 months?
-                    </p>
-                </td>
-                <td>
-                    <p>
-                        How long (in days) did you stay last time you travelled to another country?
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>
-                        How frequently do you travel to another country?
-                    </p>
-                </td>
-                <td>
-                    <p>
-                        Service
-                    </p>
-                </td>
-            </tr>
-        </table>
-    </section>
-
-    <submit />
 </htmlform>
