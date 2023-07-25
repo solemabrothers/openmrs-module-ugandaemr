@@ -331,4 +331,20 @@ public class PatientIdentifierTypes {
         }
     };
 
+    public static PatientIdentifierTypeDescriptor CROSS_BORDER_IDENTIFIER = new PatientIdentifierTypeDescriptor() {
+
+        @Override
+        public String name() {
+            return "CROSS BORDER ID";
+        }
+
+        @Override
+        public String description() {
+            return "This is an Identifier assigned to a Patient that is recieving care from facilities across the Border";
+        }
+
+        public String uuid() {
+            return "5d28672b-3ac4-463d-8624-c1fb0a9b2288";
+        }
+    };
 }
