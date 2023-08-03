@@ -42,7 +42,7 @@
                 <div class="card-header"> Encounter Details</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Date</label>
                             <encounterDate default="today" disallowMultipleEncountersOnDate="block"/>
                             <span style="display: none;">
@@ -50,17 +50,12 @@
                                                    order="629d78e9-93e5-43b0-ad8a-48313fd99117"/>
                             </span>
                         </div>
-                        <div class="col-md-3">
-                           <label>Facility name:</label>
-                            <lookup expression="fn.globalProperty('aijar.healthCenterName')"/>
-                        </div>
-                        <div class="col-md-3">
-                            <label>Facility Code:</label>
-                            <lookup expression="fn.globalProperty('ugandaemr.dhis2.organizationuuid')"/>
-                        </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Nationality:</label>
-                            <lookup expression="personAttributes.get('Natioinality').name"/>
+                            <obs id="166280" conceptId="166280" />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Service:</label> <obs id="160288" conceptId="160288" />
                         </div>
 
                     </div>
@@ -95,7 +90,6 @@
                                 <div class="col-md-4">
                                     <label>Frequency of Travel:</label> <obs id="168769" conceptId="168769" />
                                 </div>
-
                             </div>
                         </div>
                     </div>
