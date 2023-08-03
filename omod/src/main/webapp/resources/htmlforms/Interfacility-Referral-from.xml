@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-header">Personal Information</div>
                     <div class="card-body">
-                        <div class="row">
+                                               <div class="row">
                         <div class="col-md-3">
                         <label>Date</label>
                         <encounterDate default="today" disallowMultipleEncountersOnDate="block"/>
@@ -36,8 +36,9 @@
                                                order="629d78e9-93e5-43b0-ad8a-48313fd99117"/>
                         </span>
                         </div>
-                        <div class="col-md-2">
-                            <label>Nationality:</label>  <lookup expression="personAttributes.get('Natioinality').name"/>
+                        <div class="col-md-3">
+                            <label>Nationality:</label>
+                            <obs id="166280" conceptId="166280" />
                         </div>
                             <div class="col-md-3">
                                 <label>Referral Facility:</label> <obs id="90211" conceptId="90211" />
@@ -46,15 +47,7 @@
                                 <label>Target Population:</label> <obs id="165169" conceptId="165169" />
                             </div>
                         </div>
-<!--                        <div class="row">-->
-<!--                            <div class="col-md-3">-->
-<!--                               <label>Date of Referral</label> <obs id="163154" conceptId="163154" />-->
-<!--                            </div>-->
-<!--                            <div class="col-md-3">-->
-<!--                                <label>Cross-border Cluster Site</label> <obs id="163154" conceptId="163154" />-->
-<!--                            </div>-->
-<!--                        </div>-->
-                    </div>
+
 
                 </div>
 
