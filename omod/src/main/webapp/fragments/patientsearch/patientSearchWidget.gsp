@@ -636,6 +636,7 @@ h5 {
             var givenName = jq("#given-name").val();
             var patientId = jq("#patientId").val();
             var searchConfigs = getSearchConfigs(getEnabledUUID());
+            console.log(searchConfigs)
             var searchParams = generateSearchParams("search-fhsr");
             var birthDate = null;
 
