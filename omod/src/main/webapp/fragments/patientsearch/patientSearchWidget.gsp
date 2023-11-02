@@ -326,7 +326,7 @@ h5 {
             };
         }
         jQuery.ajax(settings).done(function (data) {
-            if (data.hasOwnProperty('resourceType') && data.resourceType === "Bundle" && data.total > 0) {
+            if (data.hasOwnProperty('resourceType') && data.resourceType === "Bundle" && data.entry && data.entry.length>=0) {
                 patientTransferInData = data;
                 displayFhirData(data);
             } else {
@@ -412,7 +412,7 @@ h5 {
 
         if (patientResource.hasOwnProperty("identifier")) {
             jq.each(patientResource.identifier, function (index, element) {
-                if (element.type.coding[0].code === "f0c16a6d-dc5f-4118-a803-616d0075d282" || element.type.coding[0].code === "e1731641-30ab-102d-86b0-7a5022ba4115") {
+                if (element.type && element.type.coding[0].code === "f0c16a6d-dc5f-4118-a803-616d0075d282" || element.type.coding[0].code === "e1731641-30ab-102d-86b0-7a5022ba4115") {
                     identifiersToKeep.push(element)
                 }
             });
