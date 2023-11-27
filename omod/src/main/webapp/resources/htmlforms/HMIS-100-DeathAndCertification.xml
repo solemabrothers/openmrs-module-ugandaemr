@@ -37,28 +37,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <ul class="nav nav-tabs nav-fill card-header-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#Life_style_details">Life Style/HIV Care and Treatment</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#comorbidities">Comorbidities</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#admission-history">Admission History</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#community-section">Community Section/Certified Cause of Death</a>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="card-body">
                         <div class="tab-content">
                             <div class="tab-pane active" id="Life_style_details">
                                 <div class="col-md-12">
                                     <div class="card">
-                                        <div class="card-header">Review Details</div>
+                                        <div class="card-header">Medical  Data</div>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-3 html-form-entry-disabled-field">
@@ -68,7 +52,16 @@
                                                         <encounterLocation default="629d78e9-93e5-43b0-ad8a-48313fd99117" order="629d78e9-93e5-43b0-ad8a-48313fd99117" />
                                                     </span>
                                                 </div>
-<!--                                                <div class="col-md-3">-->
+                                                <div class="col-md-4">
+                                                    <label>Cause of Death</label>
+                                                    <obs id="5002" conceptId="5002" class="horizontal" style="dropdown"/>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Time of Death</label>
+                                                    <obs id="90272" conceptId="90272" class="horizontal" style="dropdown"/>
+                                                </div>
+
+                                                <!--                                                <div class="col-md-3">-->
 <!--                                                    <label><span class="required">*</span>Reviewed By</label>-->
 <!--                                                    <encounterProvider role="Provider" style="autocomplete" id="provider"/>-->
 <!--                                                    <span style="display: none;">-->
@@ -82,114 +75,96 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="card">
-                                        <div class="card-header">Medical Data</div>
+                                        <div class="card-header">Other Medical Data</div>
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <label>Cigarette Smoking</label>
-                                                    <obs id="smoking" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                    <label>Surgery with 4 Weeks</label>
+<!--                                                   TODO  Create concepts for Surgery performed, date of surgery,reason for surgery(disease or condition), autopsy requested(yes,no),Finding used in the certifications(Yes, NO), -->
+<!--                                                    TODO-Manner of Death(Disease,)External Cause, Date of Injury, Placeof Occurance -->
+                                                    <obs id="175263" conceptId="175263" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label>Excessive alcohol consumption</label>
-                                                    <obs id="alcohol" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                    <label>Date of Surgery</label>
+                                                    <obs id="175265" conceptId="175265"/>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label>Active Injective Drug Use</label>
-                                                    <obs id="drug_use" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                    <label>Reason for Surgery</label>
+                                                    <obs id="175264" conceptId="175264"  class="horizontal"/>
                                                 </div>
 
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4">
-                                                    <label>Active Non Injecting Drug Use</label>
-                                                    <obs id="drug_use" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>Opiate Substitution(methadone)</label>
-                                                    <obs id="methadone" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>Poor Adherence</label>
-                                                    <obs id="alcohol" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                </div>
                                             </div>
                                             <div class="row">
 
                                                 <div class="col-md-4">
-                                                    <label>Malnutrition</label>
-                                                    <obs id="malnutrition" conceptId="68" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                    <label>Autopsy Requested</label>
+                                                    <obs id="175266" conceptId="175266" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal"/>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label>Key Population</label>
-                                                    <obs id="priority_population" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>Priority Population</label>
-                                                    <obs id="alcohol" conceptId="90012" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                                    <label>Results Used in Certification</label>
+                                                    <obs id="175267" conceptId="175267" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card">
-                                        <div class="card-header">Others Factors</div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label>Disclosure</label>
-                                                    <obs id="disclosure" conceptId="5616"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,NA" class="horizontal" style="radio"/>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>History of GBV</label>
-                                                    <obs id="disclosure" conceptId="90012"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,NA" class="horizontal" style="radio"/>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>OVC</label>
-                                                    <obs id="ovc" conceptId="165200"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,NA" class="horizontal" style="radio"/>
-                                                </div>
+                                        <div class="card-header">Manner of Death</div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <obs conceptId="175270" answerConceptId="99288" answerLabel="Disease" style="checkbox"/>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label>Stigma</label>
-                                                    <obs id="stigma" conceptId="90012"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,NA" class="horizontal" style="radio"/>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>Risky Sexual Behaviors</label>
-                                                    <obs id="risk_sexual_behavior" conceptId="90012"  answerConceptIds="90003,90004,90001,1175" answerLabels="Yes,No,Unknown,NA" class="horizontal" style="radio"/>
-                                                </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="175270" answerConceptId="99287" answerLabel="Accident" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="175270" answerConceptId="90001" answerLabel="Unknown" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="175270" answerConceptId="168905" answerLabel="Legal Intervation" style="checkbox"/>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <obs conceptId="175270" answerConceptId="175" answerLabel="Assault" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="175270" answerConceptId="175268" answerLabel="War" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="175270" answerConceptId="166846" answerLabel="Pending Inveistigation" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <obs conceptId="175270" answerConceptId="175269" answerLabel="Intentional Self Harm" style="checkbox"/>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <obs conceptId="175270" answerConceptId="83" answerLabel="Poison/External Causes" style="checkbox"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Place of Occurrance</label>
+                                                <obs conceptId="175271"  style="dropdown"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Date of Injury</label>
+                                                <obs id="175272" conceptId="175272"/>
+                                            </div>
+
+                                        </div>
+
                                     </div>
 
                                     <div class="card">
-                                        <div class="card-header">HIV Care and Treatment</div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label>Had the deceased EVER received ART?</label>
-                                                    <obs id="99415" conceptId="99415" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>If YES, when the earliest ART started</label>
-                                                    <obs class="return-date-poc" id="99161" conceptId="99161" allowFutureDates="true"/>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>Was the patient still on ART at the time of death?</label>
-                                                    <obs id="162872" conceptId="162872" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label>If YES, current ART Regimen before death</label>
-                                                    <obs id="90315" conceptId="90315" />
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <obs id="99025" conceptId="99025" labelText="Duration on current Regimen(months)"/>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <obs id="99024" conceptId="99024" labelText="If No, Duration off ART(months)"/>
-                                                </div>
-                                            </div>
+                                        <div class="card-header">Fatal/Infant Death</div>
+                                        <div class="col-md-4">
+                                            <label>Multiple Pregnancy</label>
+                                            <obs id="168059" conceptId="168059" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
                                         </div>
+
+
                                     </div>
 
                                 </div>
@@ -197,143 +172,10 @@
                             <div class="tab-pane" id="comorbidities" >
                                 <div class="card">
                                     <div class="card-header">Opportunistic Infection</div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="160156" answerLabel="M. tuberculosis" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="116023" answerLabel="Cervical Cancer" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="5033" answerLabel="Extrapulmonary Cryptococcosis" style="checkbox"/>
-                                            </div>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="5034" answerLabel="Cryptosporidiosis, chronic Intestinal" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="138706" answerLabel="Herpes simplex" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="5038" answerLabel="Histoplasmosis" style="checkbox"/>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="5041" answerLabel="Non Hodgkin's Lymphoma" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="5041" answerLabel="Atypical Mycobacterial infections" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="5017" answerLabel="CMV disease" style="checkbox"/>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="5345" answerLabel="Encephalopathy, including AIDS Dementia Complex" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="165127" answerLabel="Disseminated Candiasis" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="90041" answerLabel="Pneuocystis Jirovencil Pneumonia" style="checkbox"/>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="5046" answerLabel="Progressive multifocal leukoencephalopathy" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="90041" answerLabel="Microsporidiosis" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="90041" answerLabel="PJP, extrapulmonary" style="checkbox"/>
-                                            </div>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="90041" answerLabel="Isosporiasis, chronic intestinal" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="5354" answerLabel="Samonella septicemia" tyle="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="990" answerLabel="Toxoplasmosis of brain" style="checkbox"/>
-                                            </div>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="5339" answerLabel="Weight loss (over 10%)" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="90002" answerLabel="Aspergillosis, invasive" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="90002" answerLabel="Bartonellosis" style="checkbox"/>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="117543" answerLabel="Herpes zoster, multi-dermatomal" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="117543" answerLabel="Lumphoma, non-Hodgkin's, all cell types" style="checkbox"/>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <obs conceptId="90251" answerConceptId="507" answerLabel="Kaposi's Sarcoma" style="checkbox"/>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <obs id="90251" conceptId="90251" answerConceptId="90002" answerLabel="Others" style="checkbox"/>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>TB specify site of TB</label>
-                                                <obs conceptId="99463" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Other Opportunistic Infections specify</label><obs id="99032" conceptId="99032" class="horizontal"/>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <includeIf velocityTest="$patient.gender == 'F'">
                                     <div class="card">
                                         <div class="card-header">Pregnancy</div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label>Timing of maternal death</label>
-                                                    <obs conceptId="165212" answerConceptIds="160737,165208,165209,90001"  />
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <obs conceptId="99463" labelText="Parity"/>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label>Place of delivery</label>
-                                                    <obs conceptId="166743" answerConceptIds="166740,165331" style="dropdown"/>
-                                                </div>
-
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label>Delivered by skilled attendant</label>
-                                                    <obs id="119481" conceptId="119481" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Don't know" class="horizontal" style="radio"/>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </includeIf>
                             </div>
