@@ -52,11 +52,11 @@
                                                         <encounterLocation default="629d78e9-93e5-43b0-ad8a-48313fd99117" order="629d78e9-93e5-43b0-ad8a-48313fd99117" />
                                                     </span>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <label>Cause of Death</label>
-                                                    <obs id="5002" conceptId="5002" class="horizontal" style="dropdown"/>
+                                                    <obs id="5002" conceptId="5002" class="horizontal" style="autocomplete"/>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <label>Time of Death</label>
                                                     <obs id="90272" conceptId="90272" class="horizontal" style="dropdown"/>
                                                 </div>
