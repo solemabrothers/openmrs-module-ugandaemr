@@ -159,27 +159,47 @@
 
                                     <div class="card">
                                         <div class="card-header">Fatal/Infant Death</div>
-                                        <div class="col-md-4">
+                                        <div class="row">
+                                        <div class="col-md-3">
                                             <label>Multiple Pregnancy</label>
                                             <obs id="168059" conceptId="168059" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
                                         </div>
-
-
+                                        <div class="col-md-3">
+                                            <label>Still Birth</label>
+                                            <obs id="125872" conceptId="125872" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                        </div>
+                                            <div class="col-md-3">
+                                                <label>Hours Survived</label>
+                                                <obs id="159616" conceptId="159616" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Number of Weeks Pregnant</label>
+                                                <obs id="1279" conceptId="1279" />
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <includeIf velocityTest="$patient.gender == 'F'">
+                                        <div class="card">
+                                            <div class="card-header">Pregnancy</div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Pregnant at Death</label>
+                                                    <obs id="90041" conceptId="90041" answerConceptIds="90003,90004,90001" class="horizontal"  style="radio"/>
+                                            </div>
+                                                <div class="col-md-3">
+                                                    <label>Mode of Delivery</label>
+                                                    <obs id="5630" conceptId="5630"  class="horizontal" />
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </includeIf>
+                                </div>
 
                                 </div>
                             </div>
-                            <div class="tab-pane" id="comorbidities" >
-                                <div class="card">
-                                    <div class="card-header">Opportunistic Infection</div>
-                                </div>
-                                <includeIf velocityTest="$patient.gender == 'F'">
-                                    <div class="card">
-                                        <div class="card-header">Pregnancy</div>
-                                    </div>
-                                </includeIf>
-                            </div>
-                        </div>
+
                 </div>
             </div>
         </div>
