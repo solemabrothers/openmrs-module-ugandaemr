@@ -93,7 +93,7 @@
                                                     <obs id="175285" conceptId="175285"  style="dropdown"/>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <label>Time Interval</label>
+                                                    <label>Duration</label>
                                                     <obs id="1732" conceptId="1732" style="dropdown"/>
                                                 </div>
 
