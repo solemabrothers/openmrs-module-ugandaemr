@@ -54,14 +54,12 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Place of Death</label>
-                                                    <obs id="167798" conceptId="167798"  class="horizontal" style="autocomplete" />
-                                                    <span class="required">*</span><span style="display: none;"/>
+                                                    <obs id="167798" conceptId="167798"  class="horizontal" style="autocomplete" required="true" />
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <label>Date of Death</label>
-                                                    <obs id="90272" conceptId="90272" class="horizontal" style="autocomplete"/>
-                                                    <span class="required">*</span><span style="display: none;"/>
+                                                    <obs id="90272" conceptId="90272" class="horizontal" style="autocomplete" required="true"/>
                                                 </div>
                                             </div>
 
