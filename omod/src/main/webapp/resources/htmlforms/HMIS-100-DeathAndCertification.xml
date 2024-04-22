@@ -27,7 +27,7 @@
     <div id="form-id">
         <div class="row">
             <div class="col-md-6">
-                <h1>HIV DEATH REVIEW FORM</h1>
+                <h1>HMIS FORM 100: Notification and Certification of Death </h1>
             </div>
             <div class="col-md-5"></div>
             <div class="col-md-1">
@@ -47,7 +47,7 @@
                                             <div class="row">
                                                 <div class="col-md-3 html-form-entry-disabled-field">
                                                     <label>Date of Review</label>
-                                                    <encounterDate default="today" disallowMultipleEncountersOnDate="block" />
+                                                    <encounterDate default="today" disallowMultipleEncountersOnDate="block"/>
                                                     <span class="hidden">
                                                         <encounterLocation default="629d78e9-93e5-43b0-ad8a-48313fd99117" order="629d78e9-93e5-43b0-ad8a-48313fd99117" />
                                                     </span>
@@ -59,8 +59,15 @@
 
                                                 <div class="col-md-3">
                                                     <label>Date of Death</label>
-                                                    <obs id="90272" conceptId="90272" class="horizontal" style="autocomplete" required="true"/>
+                                                    <obs id="90272" conceptId="90272" class="horizontal"/>
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <label>Time of Death</label>
+                                                    <span class="time-box-horizontal">
+                                                        <obs conceptId="99542" id="99542"/>
+                                                    </span>
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -137,13 +144,13 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label>Surgery with 4 Weeks</label>
-<!--                                                   TODO  Create concepts for Surgery performed, date of surgery,reason for surgery(disease or condition), autopsy requested(yes,no),Finding used in the certifications(Yes, NO), -->
-<!--                                                    TODO-Manner of Death(Disease,)External Cause, Date of Injury, Placeof Occurance -->
+                                                    <!--                                                   TODO  Create concepts for Surgery performed, date of surgery,reason for surgery(disease or condition), autopsy requested(yes,no),Finding used in the certifications(Yes, NO), -->
+                                                    <!--                                                    TODO-Manner of Death(Disease,)External Cause, Date of Injury, Placeof Occurance -->
                                                     <obs id="175263" conceptId="175263" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Date of Surgery</label>
-                                                    <obs id="175265" conceptId="175265"/>
+                                                    <obs id="175265" conceptId="175265" showTime="true"/>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Reason for Surgery</label>
@@ -217,23 +224,23 @@
                                     <div class="card">
                                         <div class="card-header">Fatal/Infant Death</div>
                                         <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Multiple Pregnancy</label>
-                                            <obs id="168059" conceptId="168059" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>Still Birth</label>
-                                            <obs id="125872" conceptId="125872" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
-                                        </div>
+                                            <div class="col-md-3">
+                                                <label>Multiple Pregnancy</label>
+                                                <obs id="168059" conceptId="168059" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Still Birth</label>
+                                                <obs id="125872" conceptId="125872" answerConceptIds="90003,90004,90001" answerLabels="Yes,No,Unknown" class="horizontal" style="radio"/>
+                                            </div>
                                             <div class="col-md-3">
                                                 <label>Hours Survived</label>
                                                 <obs id="159616" conceptId="159616" />
                                             </div>
                                             <includeIf velocityTest="$patient.gender == 'F'">
-                                            <div class="col-md-3">
-                                                <label>Number of Weeks Pregnant</label>
-                                                <obs id="1279" conceptId="1279" />
-                                            </div>
+                                                <div class="col-md-3">
+                                                    <label>Number of Weeks Pregnant</label>
+                                                    <obs id="1279" conceptId="1279" />
+                                                </div>
                                             </includeIf>
                                         </div>
                                     </div>
@@ -245,7 +252,7 @@
                                                 <div class="col-md-3">
                                                     <label>Pregnant at Death</label>
                                                     <obs id="90041" conceptId="90041" answerConceptIds="90003,90004,90001" class="horizontal"  style="radio"/>
-                                            </div>
+                                                </div>
                                                 <div class="col-md-3">
                                                     <label>Mode of Delivery</label>
                                                     <obs id="5630" conceptId="5630"  class="horizontal" />
@@ -265,12 +272,11 @@
                                     </includeIf>
                                 </div>
 
-                                </div>
                             </div>
-
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </htmlform>
