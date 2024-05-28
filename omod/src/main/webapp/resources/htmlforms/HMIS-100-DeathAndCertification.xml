@@ -112,31 +112,6 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <table class="table table-striped">
-<!--                                                <thead>-->
-<!--                                                    <tr>-->
-<!--                                                        <th>Disease or Condition</th>-->
-<!--                                                        <th>Cause of Death</th>-->
-<!--                                                        <th>Time Interval</th>-->
-<!--                                                        <th>Duration</th>-->
-<!--                                                    </tr>-->
-<!--                                                </thead>-->
-                                                <tbody>
-                                                    <tr>
-                                                        <td rowspan="2">Other significant conditions contributing to death <br/>(time intervals can be included in brackets after the condition)</td>
-                                                        <td> <obs id="175281" conceptId="175281"  answerConceptSetIds="x" class="horizontal" style="autocomplete"/></td>
-                                                        <td> <obs id="175285" conceptId="175285"  style="dropdown"/></td>
-                                                        <td> <obs id="1732" conceptId="1732" style="dropdown"/></td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td><obs id="175282" conceptId="175282"  answerConceptSetIds="175279" class="horizontal" style="autocomplete"/></td>
-                                                        <td> <obs id="175286" conceptId="175286" /></td>
-                                                        <td><obs id="1732" conceptId="1732"/></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
                                         </div>
                                     </div>
                                 </div>
@@ -277,7 +252,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Point of Death</label>
-                                                    <obs id="175389" conceptId="175389" class="horizontal" />
+                                                    <obs id="175398" conceptId="175398" class="horizontal" />
                                                 </div>
 
                                                 <div class="col-md-3">
@@ -292,7 +267,7 @@
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label>Did the pregnancy contribute to Death</label>
-                                                    <obs id="175390" conceptId="175390"  class="horizontal" />
+                                                    <obs id="175399" conceptId="175399"  class="horizontal" />
                                                 </div>
 
                                                 <div class="col-md-3">
