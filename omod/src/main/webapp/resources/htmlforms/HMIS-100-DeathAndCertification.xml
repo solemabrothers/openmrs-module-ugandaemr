@@ -80,6 +80,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Disease or Condition</th>
+                                                        <th></th>
                                                         <th>Cause of Death</th>
                                                         <th>Time Interval</th>
                                                         <th>Duration</th>
@@ -88,30 +89,54 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>Report disease or condition directly leading to death on line a</td>
+                                                        <td>a</td>
                                                         <td><obs id="175280" conceptId="175280"  answerConceptSetIds="175279" class="horizontal" style="autocomplete"/></td>
                                                         <td><obs id="175284" conceptId="175284" /></td>
                                                         <td><obs id="1732" conceptId="1732"/></td>
                                                     </tr>
                                                     <tr>
                                                         <td rowspan="2">Report chain of events ‘due to’ (b to d) in order (if applicable)</td>
+                                                        <td>b</td>
                                                         <td> <obs id="175281" conceptId="175281"  answerConceptSetIds="175279" class="horizontal" style="autocomplete"/></td>
                                                         <td> <obs id="175285" conceptId="175285"  style="dropdown"/></td>
                                                         <td> <obs id="1732" conceptId="1732" style="dropdown"/></td>
 
                                                     </tr>
                                                     <tr>
+                                                        <td>c</td>
                                                         <td><obs id="175282" conceptId="175282"  answerConceptSetIds="175279" class="horizontal" style="autocomplete"/></td>
                                                         <td> <obs id="175286" conceptId="175286" /></td>
                                                         <td><obs id="1732" conceptId="1732"/></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>State the underlying Cause of death</td>
+                                                        <td >State the underlying Cause of death</td>
+                                                        <td>d</td>
                                                         <td><obs id="175287" conceptId="175287" answerConceptSetIds="175279" style="autocomplete"/></td>
                                                         <td><obs id="175286" conceptId="175286" /></td>
                                                         <td><obs id="1732" conceptId="1732"/></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
+
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Part 2 Other Conditions</th>
+                                                        <th>Cause of Death</th>
+                                                        <th>Time Interval</th>
+                                                        <th>Duration</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Other significant conditions contributing to death</td>
+                                                        <td><obs id="166474" conceptId="166474"/></td>
+                                                        <td><obs id="175286" conceptId="175286" /></td>
+                                                        <td><obs id="1732" conceptId="1732"/></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
                                         </div>
                                     </div>
                                 </div>
@@ -187,7 +212,8 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Place of Occurrance</label>
-                                                <obs conceptId="175271"  style="dropdown"/>
+                                                <obs conceptId="175271" answerConceptIds="168610,159928,175273,175274,175275,175276,175276,175278,90001,90002"
+                                                     answerLabels="At Home,School Other institution Public administrative area,Residential institution,Sports and athletics area,Street and highway,Trade and service area,Industrial and construction area,Farm,Unknown,Other Specify" style="dropdown"/>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Date of Injury</label>
@@ -257,7 +283,7 @@
 
                                                 <div class="col-md-3">
                                                     <label>Mode of Delivery</label>
-                                                    <obs id="5630" conceptId="5630"  class="horizontal" />
+                                                    <obs id="5630" answerConceptIds="1170,1171,163005" answerLabels="SVD,Assisted,Caesarean" conceptId="5630"  class="horizontal" />
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Place of Delivery</label>
@@ -280,7 +306,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Medical Practioner</label>
-                                                    <encounterProvider role="Provider" type="autocomplete" default="currentUser" />
+                                                    <encounterProvider role="Provider" type="autocomplete" />
                                                 </div>
                                             </div>
                                         </div>
