@@ -280,7 +280,20 @@
                                                     <label>Point of Death</label>
                                                     <obs id="175398" conceptId="175398" class="horizontal" />
                                                 </div>
-
+                                                <div class="col-md-3">
+                                                    <label>Did the pregnancy contribute to Death</label>
+                                                    <obs id="175399" conceptId="175399"  class="horizontal" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Referred from</label>
+                                                    <obs id="166791" conceptId="166791"  class="horizontal" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Parity</label>
+                                                    <obs id="1053" conceptId="1053"  class="horizontal" />
+                                                </div>
                                                 <div class="col-md-3">
                                                     <label>Mode of Delivery</label>
                                                     <obs id="5630" answerConceptIds="1170,1171,163005" answerLabels="SVD,Assisted,Caesarean" conceptId="5630"  class="horizontal" />
@@ -289,21 +302,12 @@
                                                     <label>Place of Delivery</label>
                                                     <obs id="166743" conceptId="166743"  class="horizontal" />
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Did the pregnancy contribute to Death</label>
-                                                    <obs id="175399" conceptId="175399"  class="horizontal" />
-                                                </div>
-
-                                                <div class="col-md-3">
-                                                    <label>Parity</label>
-                                                    <obs id="1053" conceptId="1053"  class="horizontal" />
-                                                </div>
                                                 <div class="col-md-3">
                                                     <label>Delivered By Skilled Attendant</label>
                                                     <obs id="175288" conceptId="175288"  class="horizontal" />
                                                 </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-md-3">
                                                     <label>Medical Practioner</label>
                                                     <encounterProvider role="Provider" type="autocomplete" />
