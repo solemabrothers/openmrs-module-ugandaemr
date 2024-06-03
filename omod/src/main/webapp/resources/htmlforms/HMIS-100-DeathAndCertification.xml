@@ -109,7 +109,7 @@
                                                         <td><obs id="1732" conceptId="1732"/></td>
                                                     </tr>
                                                     <tr>
-                                                        <td >State the underlying Cause of death</td>
+                                                        <td>State the underlying Cause of death</td>
                                                         <td>d</td>
                                                         <td><obs id="175287" conceptId="175287" answerConceptSetIds="175279" style="autocomplete"/></td>
                                                         <td><obs id="175286" conceptId="175286" /></td>
